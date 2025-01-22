@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traducción de Palabras</title>
+    <script>
+        function enviarTexto() {
+            const texto = document.getElementById('texto').value;
+            const palabras = texto.split(/\s+/);
+            const maxPalabras = 400;
+
+            let textoCortado = palabras.slice(0, maxPalabras).join(' ');
+
+            fetch('consulta', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ texto: textoCortado })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Respuesta del servidor:', data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Traducción de Palabras</h1>
+    <textarea id="texto" rows="10" cols="50" placeholder="Ingrese su texto aquí..."></textarea><br>
+    <button onclick="enviarTexto()">Enviar</button>
+</body>
+</html></html>
