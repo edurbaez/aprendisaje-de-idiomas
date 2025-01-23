@@ -122,6 +122,7 @@
                 });
             });
 
+            setTimeout(() => {
 
             lista.sort((a, b) => a.palabra.localeCompare(b.palabra)).forEach((line, index) => {
                 const li = document.createElement('li');
@@ -139,6 +140,9 @@
                 li.appendChild(table);
                 paas.appendChild(li);
             });
+            }, 2000);
+
+
         });
 
 
