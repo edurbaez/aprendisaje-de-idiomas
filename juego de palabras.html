@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Palabras</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .menu {
+            display: flex;
+            justify-content: space-around;
+            background-color: #333;
+            padding: 10px;
+        }
+        .menu button {
+            background-color: #444;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .menu button:hover {
+            background-color: #555;
+        }
+        .section {
+            display: none;
+            padding: 20px;
+        }
+        .section.active {
+            display: block;
+        }
+
+        #palabra, #op2, #op1, #op3, #op4{
+            box-shadow: rgba(255, 0, 0, 0.274) -1px 4px 1px 2px;
+            text-align: center;
+            padding: 10px;
+        }
+        #palabra{
+            background: rgba(29, 28, 28, 0.34);
+            font-size: 1.2rem;
+        }
+        header h1{
+            padding: 0;
+            margin-left: 40px;
+        }
+        #tablero{
+            margin: auto;
+            width: 90%;
+            display: flex;
+            justify-content: space-around;
+        }
+        #juego{
+            margin: auto;
+            width: 90%;
+        }
+        #menu{
+            position: fixed;
+            background: rgba(1, 1, 32, 0.281);
+            width: 40px;
+            height: 32px;
+            padding: 0;
+            margin: 0;
+            border: 1px 1px solid black;
+            transition: width 1s;
+           overflow: hidden;
+        }
+        #contenedorlista{
+            max-height: 200px;
+            overflow-y: auto;
+
+        }
+        #lista{
+            position: relative;
+            margin: auto;
+            width: 90%;
+            border: 1px solid grey;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        td, th{
+            border-bottom: 2px solid grey;
+            text-align: center;
+            font-size: 20px;
+        }
+
+
+        div  #contenedorpalabra{
+            /*display: ;*/
+            margin: auto;
+            width: 90%;
+            justify-content: space-around;
+            }
+        
+
+        div #p1, #p2{
+            padding: 20px;
+            width: 50%;
+            height: 50%;
+           
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            border: 1px solid black;
+        }
+        button {
+            flex: 1 1 auto;
+            font-size: 1em;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border: #173819 solid 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <button onclick="showSection('home')">Inicio</button>
+        <button onclick="showSection('game')">Juego</button>
+        <button onclick="showSection('selecionarpalabra')">selecionar palabra</button>
+        <button onclick="showSection('repetirpalabras')">repetir palabras</button>
+        <button onclick="showSection('about')">Acerca de</button>
+    </div>
+
+    <div id="home" class="section active">
+        <h1>Bienvenido al Juego de Palabras</h1>
+        <p>Esta es la sección de inicio.</p>
+    </div>
+
+    <div id="game" class="section">
+        <h1>Juego</h1>
+        <p>Esta es la sección del juego.</p>
+    </div>
+    <div id="selecionarpalabra" class="section">
+        <div id="menu" onclick="desplegarmenu()" >
+            <div style="padding: 0%;">
+                <?xml version="1.0" encoding="iso-8859-1"?>
+                <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     width="15px" height="15px" viewBox="0 0 612 612" style="enable-background:new 0 0 612 612; margin: 0%;" xml:space="preserve">
+                <g>
+                    <g id="_x33__1_">
+                        <g>
+                            <path d="M61.2,122.4h489.6c33.782,0,61.2-27.387,61.2-61.2S584.613,0,550.8,0H61.2C27.387,0,0,27.387,0,61.2
+                                S27.387,122.4,61.2,122.4z M550.8,244.8H61.2C27.387,244.8,0,272.187,0,306c0,33.812,27.387,61.2,61.2,61.2h489.6
+                                c33.782,0,61.2-27.388,61.2-61.2C612,272.187,584.613,244.8,550.8,244.8z M550.8,489.6H61.2C27.387,489.6,0,516.987,0,550.8
+                                C0,584.613,27.387,612,61.2,612h489.6c33.782,0,61.2-27.387,61.2-61.2C612,516.987,584.613,489.6,550.8,489.6z"/>
+                        </g>
+                    </g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                </svg>
+            </div>
+            
+            <button onclick="bases('cap1')">cap 1</button>
+            <button onclick="bases('cap5')">cap 5</button>
+            <button onclick="bases('verbos')">verbos</button>
+            <button onclick="bases('advervios')">advervios</button>
+            <button onclick="bases('curso')">curso</button>
+            <button onclick="bases('duolingo')">duolingo</button>
+            <button onclick="bases('advervios')">libro miteinander</button>
+            
+            <button onclick="bases('errores')">errores</button>
+            
+            
+
+        </div>
+        <h1 id="titulo">juego de palabras</h1>
+        
+        <div id="tablero">
+            <div id="errores">0</div>
+            <div id="aciertos">0</div>
+            <div id="tiempo">3</div>
+        </div>
+        <div id="juego">
+            <div id="palabra"></div>
+            <div id="opciones">
+                <div id="op1"></div>
+                <div id="op2"></div>
+                <div id="op3"></div>
+                <div id="op4"></div>
+            </div>
+        </div>
+        <hr>
+        
+        <button onclick="addconocidad()">addconocidas</button>
+        <div id="contenedorlista" >
+            <table id="lista" >
+                <tr>
+                    <th>uno</th>
+                    <th>dos</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+    <div id="repetirpalabras" class="section">
+        <h1>repetir palabras</h1>
+        <p>Esta es la sección del juego.</p>
+        <div id="contenedorpalabra">
+            <div id="p1">edd</div>
+            <div id="p2">wwdw</div>
+        </div>
+        <footer>
+            <button id="auto" onclick="Auto()" style="background-color: green;">auto: on</button>
+            <button id="dual" onclick="Dual()" style="background-color: red;">de</button>
+            <button id="leer" onclick="leerTexto()">Leer</button>
+            
+        </footer>
+        <hr>
+        <div  id="listas" style="display: flex;margin: 0%;">
+           
+            <button onclick="verlista(baseesp,basede)">desplegar lista</button>
+            
+        </div>
+        
+
+
+    </div>
+
+    <div id="about" class="section">
+        <h1>Acerca de</h1>
+        <p>Esta es la sección acerca de.</p>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+
+
+        //base con todas la palabras en español y aleman
+        var baseesp= [];
+        var basede= [];
+
+        const baseDeDatod= {
+            cap1:{
+                es:["el pastelito", "la ronda", "el curso de integración", "urbano", "el desafío", "fluir", "la coincidencia", "felicitar", "felicitado", "genial", "útil", "la posibilidad", "la formación adicional", "la industria", "el maestro", "financiero", "la financiación", "el clima", " en tu lugar", "en tu lugar", "el cuarto", "la ventaja", "la desventaja", "la dieta", "relativo", "delgado", "el estado de ánimo", "la comparación", "el progreso", "la grasa", "bajo en sal", "bajo en grasas", "reconocer", "ha reconocido", "analizar", "ha analizado", "medida", "ha medido", "del paso", "elegir", "ha seleccionado", "advertir", "prevenido", "haz un esfuerzo", "hizo un esfuerzo", "controlar", "ha comprobado", "la terapia", "el hombro", "físicamente", "la enfermedad", "la operación", "el terapeuta", "el terapeuta", "tratar", "ha tratado", "el tratamiento", "activo", "afrontar", "ha hecho frente", "el musculo", "el calor", "el metodo", "reaccionar", "él reacciona", "probar", "ha intentado", "daño", "hizo daño", "probablemente", "especial", "legalmente", "necesidad", "ha requerido", "el zachlung", "la parte", "el organo", "cúrate a ti mismo", "ha sanado", "la diferencia", "en absoluto", "por cierto", "controlar", "comprobado", "la dieta", "perezoso", "a pesar de", "la recuperación", "no hay señales de recuperación", "a saber", "estar en silencio", "estaba en silencio", "la reacción", "el hábito", "constante", "la presión arterial", "la sangre", "la presión", "el pulso", "consumir", "ha consumido", "detener", "la actuación", "el papel", "el peligro", "observar", "recordar", "ha notado", "la participación", "la precaución", "regularmente", "la vacuna", "la membresía", "el fumador", "valioso", "prueba", "ha sido probado", "la entrevista", "el miembro", "especial", "participar", "participó", "hacer deporte", "sensitivo", "extraño", "negativo", "la rutina diaria", "agradable", "la prisa", "infancia", "fiel", "sentirse bien", "me sentí cómodo", "confiable", "la aventura", "máximo", "marcar", "ha marcado", "marco la pagina", "lo mismo / lo mismo / lo mismo"],
+                de:["das Gebäck", "die Runde", "der Integrationskurs", "städtisch", "die Herausforderung", "fließen", "der Zufall", "gratulieren", "hat gratuliert", "das ist klasse", "nützlich", "die Möglichkeit", "die Weiterbildung", "die Industrie", "der Meister", "finanzielle", "die Förderung", "das Klima", " an deiner Stelle", "an Ihrer Stelle", "das Viertel", "der Vorteil", "der Nachteil", "die Ernährung", "relativ", "schlank", "die Laune", "der Vergleich", "der Fortschritt", "das Fett", "salzarm", "fettarm", "erkennen", "hat erkannt", "analysieren", "hat analysiert", "messen", "hat gemessen", "des Schritt", "auswählen", "hat auswählt", "warnen", "hat gewarnt", "sich anstrengen", "hat sich angestrengt", "prüfen", "hat geprüft", "die Therapie", "die Schulter", "körperlich", "die Krankheit", "die Operation", "der Therapeut", "die Therapeutin", "behandeln", "hat behandelt", "die Behandlung", "aktiv", "zurechtkommen", "ist zurechtgekommen", "der Muskel", "die Wärme", "die Methode", "reagieren", "het reagiert", "probieren", "hat probiert", "schaden", "hat geschadet", "wohl", "speziell", "gesetzlich", "benötigen", "hat benötigt", "die Zachlung", "der Teil", "das Organ", "sich heilen", "hat geheilt", "der Unterschied", "überhaupt", "übrigens", "checken", "hat gecheckt", "die Diät", "faul", "obwohl", "die Erholung", "von Erholung keine Spur", "nämlich", "schweigen", "hat geschwiegen", "die Reaktion", "die Gewohnheit", "ständig", "der Blutdruck", "das Blut", "der Druck", "der Puls", "verbrauchen", "het verbraucht", "halt", "die Leistung", "die Rolle", "die Gefahr", "beachten", "erinnern", "hat beachtet", "die Teilnahme", "die Vorsorge", "regelmäßig", "die Impfung", "die Mitgliedschaft", "der Raucher", "wertvoll", "testen", "hat sich getestet", "das Interview", "das Mitglied", "besonder", "teilnehmen", "hat teilgenommen", "Sport treiben", "sinnvoll", "seltsam", "negativ", "der Tagesablauf", "angenehm", "die Eile", "die Kindheit", "treu", "sich wohlfühlen", "hat sich wohlgefühlt", "zuverlässig", "das Abenteuer", "maximal", "ankreuzen", "hat angekreuzt", "ich ankreuze die Seite", "derselbe / diesalbe / dasselbe"]
+            },
+            cap5:{
+                es:["firmemente", "mantener", "acto", "desconocido", "La cantidad", "la derivación", "el apoyo", "el efecto", "desagradable", "la introducción", "fatiga", "tirar/mover, ha tirado/movido/mudado", "decepcionante", "notar; ha notado", "recordar", "viajar; ha viajado", "establecer", "poder pagar", "experiencia", "abierto", "Afirmar", "la administracion", "el evento", "llegó como tenía que venir", "tan pronto como", "recuperarse", "¿te estás recuperando bien?", "usar", "evitar", "evitar", "me evitas", "evitas verme", "decidir", "Decisión", "determinar", "varios", "intentar; ha intentado", "perdonar", "indulto", "tener", "esperar (preveer)", "Entregar", "presionar", "horrible", "aceptar", "divertido", "inventado", "crear, lograr", "puedo hacerlo", "obsevar (activo, tomar en cuenta)", "observar(pasivo, sin hacer nada)"],
+                de:["fest", "behalten", "handeln", "unbekannt", "die Menge", "die Ableitung", "die Ünterstützung", "die Wirkung", "unangenehmen", "die Einführung", "ermüden", "ziehen, hat gezogen", "enttäusch", "bemerken; hat bemerkt", "erinnern", "reisen; ist gereist", "festlegen", "leisten", "erfahren", "offnen", "Anspruch", "die Verwaltung", "die Veranstaltung", "es kam, wie es kommen musste", "sobald", "sich erholen", "erholst du dich gut?", "verwenden", "vermeiden", "meiden", "du meidest mich", "du meidest es, mich zu sehen", "entscheiden", "Entscheidung", "bestimmen", "vershiedene", "ausprobieren; hat ausprobiert", "vergeben", "verzeihen", "verfügen", "erwarten", "abgeben", "drücken", "schlimm", "akzeptieren", "komisch", "erfunden", "schaffen", "ich schaffe das", "beachten", "beobachten"]
+            },
+            
+            verbos:{
+                    es:[
+                    "haber/ser", "tener", "llegar a ser", "poder", "deber", "decir", "hacer", "dar", "venir", "deber", "querer", "ir", "saber", "ver", "dejar", "estar de pie", "encontrar", "quedarse", "estar acostado", "llamarse", "pensar", "tomar", "hacer", "tener permiso", "creer", "sentir", "hablar", "traer", "vivir", "preguntar", "ayudar", "jugar", "trabajar", "seguir", "hablar", "escuchar", "conducir", "escribir", "leer", "correr", "tirar", "poner", "recibir", "comprar", "buscar", "olvidar", "perder", "pagar", "costar", "comer", "beber", "dormir", "sentarse", "caer", "subir", "esperar", "pasar", "aprender", "entender", "darse cuenta", "recordar", "gustar", "amar", "odiar", "necesitar", "intentar", "lograr", "explicar", "mostrar", "tocar", "oler", "saborear", "tocar", "bailar", "cantar", "pintar", "dibujar", "hacer manualidades", "coser", "tejer", "hacer ganchillo", "cocinar", "hornear", "asar", "hacer a la parrilla", "cortar", "picar", "pelar", "mezclar", "revolver", "agitar", "verter", "remojar", "escurrir", "sazonar", "probar", "tragar", "masticar", "respirar", "abrir", "cerrar", "desechar", "guardar", "reír", "llorar", "sonreír", "gritar", "trepar", "saltar", "correr", "hacer senderismo", "nadar", "bucear", "navegar", "remar", "montar a caballo", "volar", "deslizarse", "deslizarse", "rodar", "lanzar", "atrapar", "cazar", "disparar", "encontrar", "abrazar", "besar", "golpear", "patear", "boxear", "arañar", "morder", "lamer", "cavar", "construir", "arreglar", "romper", "perforar", "frotar", "amasar", "secar", "lavar", "limpiar", "aspirar", "pulir", "imprimir", "pegar", "atar", "doblar", "enhebrar", "tejer", "hacer nudos", "hilar", "forjar", "tallar", "serrar", "cepillar", "lijar", "limar", "barnizar", "pintar", "barnizar", "construir", "construir muros", "enlucir", "alicatar", "empapelar"
+                    ],
+                    de:[
+                    "sein", "haben", "werden", "können", "müssen", "sagen", "machen", "geben", "kommen", "sollen", "wollen", "gehen", "wissen", "sehen", "lassen", "stehen", "finden", "bleiben", "liegen", "heißen", "denken", "nehmen", "tun", "dürfen", "glauben", "fühlen", "sprechen", "bringen", "leben", "fragen", "helfen", "spielen", "arbeiten", "folgen", "reden", "hören", "fahren", "schreiben", "lesen", "laufen", "ziehen", "setzen", "bekommen", "kaufen", "suchen", "vergessen", "verlieren", "zahlen", "kosten", "essen", "trinken", "schlafen", "sitzen", "fallen", "steigen", "warten", "passieren", "lernen", "verstehen", "merken", "erinnern", "mögen", "lieben", "hassen", "brauchen", "versuchen", "schaffen", "erklären", "zeigen", "anfassen", "riechen", "schmecken", "berühren", "tanzen", "singen", "malen", "zeichnen", "basteln", "nähen", "stricken", "häkeln", "kochen", "backen", "braten", "grillen", "schneiden", "hacken", "schälen", "mixen", "rühren", "schütteln", "gießen", "tränken", "abtropfen", "würzen", "probieren", "schlucken", "kauen", "atmen", "öffnen", "schließen", "wegwerfen", "speichern", "lachen", "weinen", "lächeln", "schreien", "klettern", "springen", "rennen", "wandern", "schwimmen", "tauchen", "segeln", "rudern", "reiten", "fliegen", "rutschen", "gleiten", "rollen", "werfen", "fangen", "jagen", "schießen", "treffen", "umarmen", "küssen", "schlagen", "treten", "boxen", "kratzen", "beißen", "lecken", "graben", "bauen", "reparieren", "brechen", "bohren", "reiben", "kneten", "trocknen", "waschen", "putzen", "saugen", "polieren", "drucken", "kleben", "binden", "falten", "fädeln", "weben", "knüpfen", "spinnen", "schmieden", "schnitzen", "sägen", "hobeln", "schleifen", "feilen", "beizen", "anstreichen", "lasieren", "zimmern", "mauern", "verputzen", "fliesen", "tapezieren"
+                    ]
+            },
+            advervios: {
+                es:[
+                    "ahora", "aquí", "entonces", "allí", "siempre", "ya", "todavía", "así", "tal vez", "a menudo", "realmente", "justo", "bien", "muy", "sin embargo", "pronto", "también", "incluso", "casi", "seguro", "bastante", "hoy", "a veces", "nunca", "apenas", "una vez", "poco", "de nuevo", "ayer", "finalmente", "exactamente", "mañana", "gustosamente", "primero", "afuera", "por lo tanto", "por último", "en realidad", "mientras tanto", "durante mucho tiempo", "seguramente", "suficiente", "de repente", "de alguna manera", "hacia aquí", "aproximadamente", "abajo", "por la mañana", "en aquel entonces", "de lo contrario", "recientemente", "temprano", "verdaderamente", "diariamente", "detrás", "atrás", "más a menudo", "después", "de hecho", "completamente", "en vano", "desde lejos", "por mí", "sin embargo", "abajo", "junto con", "hacia un lado", "ahora", "recientemente", "arriba", "alrededor", "últimamente", "hace mucho tiempo", "sin embargo", "recientemente", "una vez", "igualmente", "siempre", "a tiempo", "a veces", "mediante eso", "de ahí", "próximamente", "por lo tanto", "esta vez", "encima", "después de eso", "entre", "mientras tanto", "después de eso", "al lado", "después", "antes", "de este lado", "en algún momento", "dentro de", "fuera", "luego de eso"
+                ],
+                de:[
+                    "jetzt", "hier", "dann", "dort", "immer", "schon", "noch", "so", "vielleicht", "oft", "wirklich", "gerade", "gut", "sehr", "doch", "bald", "auch", "gar", "fast", "sicher", "ziemlich", "heute", "manchmal", "niemals", "kaum", "einmal", "wenig", "wieder", "gestern", "endlich", "genau", "morgen", "gerne", "erst", "draußen", "deshalb", "zuletzt", "eigentlich", "dabei", "lange", "bestimmt", "genug", "plötzlich", "irgendwie", "hierher", "etwa", "herunter", "morgens", "damals", "sonst", "soeben", "früh", "wahrhaftig", "täglich", "hinterher", "hinten", "öfter", "nachher", "tatsächlich", "vollkommen", "umsonst", "weither", "meinetwegen", "trotzdem", "unten", "samt", "seitwärts", "nunmehr", "neulich", "oben", "herum", "letzthin", "längst", "gleichwohl", "kürzlich", "amal", "gleichsam", "allemal", "beizeiten", "bisweilen", "dadurch", "daraus", "demnächst", "daher", "diesmal", "drauf", "daraufhin", "dazwischen", "derweil", "darnach", "daneben", "danach", "davor", "diesseits", "irgendwann", "innerhalb", "außen", "draufhin"
+                ]
+            },
+            sustantivos : {
+                es: [
+                    // 150 sustantivos en español
+                    "la tarde", "la dirección", "la oferta", "el miedo", "la respuesta", "la farmacia", "la manzana", "el trabajo", "el ojo", "la excursión", "el coche", "la panadería", "la estación de tren", "la pelota", "el árbol", "la pierna", "la flor", "el suelo", "el barco", "el libro", "la oficina", "el autobús", "el café", "la fecha", "el techo", "el martes", "la lata", "la impresora", "la esquina", "el correo electrónico", "el huevo", "el final", "el éxito", "la fábrica", "la familia", "la ventana", "el dedo", "la pregunta", "el amigo", "el desayuno", "el equipo de fútbol", "el partido de fútbol", "el garaje", "el nacimiento", "el cumpleaños", "el dinero", "la historia", "el sabor", "el regalo", "la cara", "la salud", "la guitarra", "las felicitaciones", "el saludo", "el pelo", "el cuello", "el teléfono móvil", "el bolso", "el cielo", "el hobby", "el hotel", "el año", "enero", "los vaqueros", "julio", "la cámara", "el cine", "el vestido", "la maleta", "la tarjeta de crédito", "el pastel", "el cliente", "la lámpara", "el paisaje", "la farola", "el profesor", "la pasión", "la vida", "la canción", "la luz", "el amor", "el agujero", "el aire", "la medida", "el muro", "mayo", "el gorro", "la cantidad", "el mar", "la feria", "el mediodía", "el mes", "el gorro", "el museo", "el nombre", "la noche", "la nariz", "la red", "la nota", "el número", "la fruta", "la oreja", "octubre", "el paquete", "el parque", "el caballo", "el lugar", "el póster", "el precio", "el problema", "el producto", "el examen", "la rueda", "la lluvia", "el restaurante", "la receta", "el viaje", "la falda", "la cosa", "el sábado", "la arena", "el paraguas", "el barco", "el jamón", "la nieve", "el chocolate", "el zapato", "el estudiante", "el cerdo", "la hermana", "el lago", "la página", "septiembre", "el esquí", "el verano", "el sol", "el domingo", "el juego", "el deporte", "el estado", "el filete", "la ciudad", "la piedra", "la bota", "la playa", "el estudio", "la silla", "el taxi", "el té", "el teléfono", "la cita", "el animal", "el billete", "la puerta", "el turista", "el entrenamiento", "la puerta", "la camiseta", "el tipo", "la orilla", "el reloj", "las vacaciones", "el padre", "la bicicleta", "el medio de transporte", "el embalaje", "el seguro", "la villa", "el visado", "el aperitivo", "la pared", "el almacén", "la ropa", "el agua", "el tiempo", "el fin de semana", "el lugar de residencia", "el apartamento", "la nube", "la semana", "la salchicha", "el número", "el tiempo", "el objetivo", "la habitación", "el zoológico", "el azúcar", "el centro", "el periódico", "el limón", "la lengua", "el futuro", "el certificado", "el cigarrillo", "el tren", "la cebolla", "la cena", "la aventura", "el examen de selectividad", "el departamento", "la dirección", "el mono", "la agencia", "el álbum", "la avenida", "la alergia", "el país alpino", "el alfabeto", "la pesadilla", "el semáforo", "la vista", "la oferta", "el ataque", "el sentimiento de miedo", "el ancla", "la vista", "la librería de segunda mano", "el traje", "la manzana", "el acuario", "el brazo", "el reloj de pulsera", "el tipo", "el asilo", "la tarea", "la atención", "el ojo", "el momento", "la formación", "la excursión", "la salida", "el documento de identidad", "la selección", "la autopista", "la tarjeta de autógrafos", "la marca de automóvil", "la carrera de coches", "la concesionaria de automóviles", "el arroyo", "el horno", "la panadería", "la bañera", "la toalla de baño", "el andén", "el balcón", "el plátano", "el banco", "el billete de banco", "la cuenta bancaria", "la banca", "el bar", "el dinero en efectivo", "la barba", "la base", "la construcción", "la granjera", "la granja", "el árbol", "la pieza", "el funcionario", "la respuesta", "el editor", "el ritmo", "la necesidad", "la necesidad", "la afectación", "el talento", "la justificación", "la carta de presentación", "el recipiente", "la autoridad", "el tratamiento", "la afirmación", "el ejemplo", "el conocido", "la iluminación", "la recompensa", "la ventilación", "la gasolina", "la consulta", "el informe", "la vida laboral", "el contacto", "el campo profesional", "el empleo", "el certificado", "la decisión", "el propietario", "la confirmación", "los cubiertos", "la cantidad", "el tutor", "el cuidado", "la población", "la relación", "la prueba", "la solicitud", "la carta de solicitud", "los documentos de solicitud", "la biblioteca", "la imagen", "la pantalla", "la pera", "la solicitud", "la mirada", "el bloque", "la sangre", "el suelo", "el bono", "la bolsa", "el borde", "la sartén", "el vestido de novia", "el puré", "la carta", "el buzón", "el sobre", "las gafas", "el bollo", "el hermano", "el puente", "el pecho", "la librería", "la letra (del alfabeto)", "el presupuesto", "la lata", "la plancha", "el clip", "el edificio de oficinas", "el arbusto", "la mantequilla", "el cappuccino", "el champán", "el caos", "el carisma", "la oportunidad", "la jefa", "el chile", "el cloro", "el coro", "el árbol de Navidad", "la crema", "el croissant", "la salchicha al curry", "la terraza en la azotea", "el techo", "el perro salchicha", "el vapor", "la fecha", "el pulgar", "el debut", "el techo", "la decoración", "el desodorante", "la sucursal", "el diseño", "la ropa interior", "el detective", "diciembre", "la dieta", "el diafragma", "la poesía", "la diferencia", "el reloj digital", "el diploma", "la dirección", "el director", "la pantalla", "el DJ", "el doctor", "la documentación", "el dominio", "jueves", "el pueblo", "la lata", "la fruta del dragón", "el drama", "la rotación", "la impresora", "los alrededores", "el duelo", "el aroma", "la estupidez", "la esquina", "el matrimonio", "la pareja casada", "la honestidad", "el roble", "la lagartija", "la proteína", "el unicornio", "la invitación", "el mobiliario", "el ingreso", "la tabla de multiplicar", "la invasión", "la soledad", "la evaluación", "la comprensión", "la objeción", "la entrada", "la habitación individual", "la entrada", "la heladería", "la heladería", "la vanidad", "la característica", "la prisa", "el centro comercial", "el habitante", "el consentimiento", "la vanidad", "la aversión", "el alce", "la electricidad", "el elemento", "la reunión de padres", "la paternidad", "el progenitor", "el esmalte", "el destinatario", "el compromiso", "la nieta", "la enzima", "el guisante", "la planta baja", "el cacahuete", "la conexión a tierra", "la aparición", "la expectativa", "la educación", "el truco mnemotécnico", "la comida", "el vinagre", "la planta", "el búho", "el experimento", "la experiencia", "el experto", "la expedición", "la fábrica", "la habilidad", "el conductor", "el vehículo", "la familia", "la fantasía", "la fantasía", "el color", "el barril", "la fachada", "el fascinante", "la pluma", "la retroalimentación", "la celebración", "la cobardía", "el enemigo", "el campo", "la roca", "el control remoto", "la televisión", "la nostalgia de viajar", "la habilidad", "la fiesta", "la fortaleza", "el fuego", "el abeto", "la figura", "el plato de pescado", "el estanque de peces", "el gimnasio", "el abridor de botellas", "la carne", "la línea de montaje", "la flauta", "el avión", "la orilla del río", "el río", "la marea", "el potro", "la consecuencia", "el secador de pelo", "la foto", "el fotógrafo", "la fotografía", "el álbum de fotos", "el carguero", "la señorita", "el francés (idioma)", "el amigo", "la amistad", "la alegría", "la paz", "el cementerio", "el frisbee", "el peinado", "la primavera", "la primavera", "la fruta", "el desayuno", "la visita guiada", "el carné de conducir", "la abundancia", "el fundamento", "el silencio de radio", "la zona peatonal", "el partido de fútbol", "el peatón", "la galaxia", "la galería", "la margarita", "el garaje", "el guardarropa", "el jardín", "el acelerador", "la posada", "la pastelería", "el nacimiento", "la fiesta de cumpleaños", "el regalo de cumpleaños", "la paciencia", "la prisión", "el favor", "el sentimiento", "el intercomunicador", "el espíritu", "el dinero", "el terreno", "la validez", "la pintura", "el huerto", "la verdura", "el general", "el genio", "la ingeniería genética", "el caballero", "el rifle", "el peso", "el hábito", "el brillo", "el vaso", "la vía", "la suerte", "el juego de azar", "la gracia", "el pez dorado", "el servicio religioso", "la cocina gourmet", "la tumba", "el tamaño", "el rencor", "la moneda de diez céntimos", "el verde", "el grupo pequeño", "la base", "el plano", "el grupo", "la foto de grupo", "el grano", "el saludo", "el fundador", "el gulash", "el crédito", "la gimnasia", "la ginecología", "el talón", "las hojuelas de avena", "el puerto", "el gallo", "el filete de pollo", "la sala", "la parada", "el martillo", "la mano", "el teléfono móvil", "el número de teléfono móvil", "el trabajo manual", "la toalla", "el oficio", "el número de teléfono móvil", "la armonía", "el pelo", "el spray para el cabello", "la dureza", "la avellana", "la capital", "la estación principal de trenes", "el plato principal", "el médico de cabecera", "la casa flotante", "el remedio casero", "el número de la casa", "el conserje", "la piel", "la partera", "el lucio", "la curación", "la patria", "la ciudad natal", "el radiador", "la camisa", "el semental", "el tiempo de otoño", "la mansión", "el corazón", "la cordialidad", "la ayuda", "la cama con dosel", "la frambuesa", "la ejecución", "la indicación", "la boda", "el patio", "la esperanza", "el taburete", "la altura", "el sistema de cuevas", "la audición", "el hotel", "la gallina", "la correa para perros", "el collar de perro", "la cabaña", "el iglú", "la ilusión", "la inflación", "el interior", "el instrumento", "el internista", "el internet", "la interpretación", "el habitante de la isla", "la inspiración", "la entrevista", "la zona íntima", "el inventario", "la inversión", "el aislamiento", "la estación del año", "el siglo", "el cambio de siglo", "enero", "el japonés (idioma)", "el jazmín", "el más allá", "el yogur", "el jogging", "el yogur", "el comodín", "el periodista", "el diario", "la juventud", "junio", "la cría", "el soltero", "la virgen", "la yurta", "el cable", "la jaula", "el emperador", "el cactus", "el frío", "el fuego de chimenea", "el luchador", "la jarra", "la capacidad", "el capítulo", "la cápsula", "el carrusel", "el casino", "el queso", "el casete", "el cajón", "el gato", "la categoría", "el gatito", "la garganta", "la galleta", "la lata de galletas", "las migas de galleta", "la mezcla de galletas", "la barra de galleta", "el sótano", "el sótano", "el camarero", "el lagar", "la cadena", "el pino", "la cereza", "la caja", "el cojín", "la cosquilla", "el sonido", "la claridad", "la clase", "el clásico", "el examen", "la garra", "el clima", "la rodilla", "el hueso", "el nudo", "el libro de cocina", "la olla", "la colisión", "el rey", "el reino", "la competencia", "el concepto", "la cuenta", "la conversación", "la granulación", "el cuerpo", "la cesta", "el disfraz", "el vehículo de motor", "el combustible", "la garra", "el arañazo", "la creatividad", "la cruz", "la península de Crimea", "el thriller", "la crisis", "la bola de cristal", "la corona", "la costra", "la cocina", "los utensilios de cocina", "la vaca", "la cultura", "el cliente", "el servicio al cliente", "el curso de arte", "el comerciante de arte", "la obra de arte", "la exposición de arte", "el plástico", "el cobre", "la curva", "la carroza", "la costa", "el trabajo de laboratorio", "el laboratorio", "la tienda", "el hurto en tienda", "la estación de carga", "el almacén", "la lámpara", "el paisaje", "la pintura de paisaje", "el compatriota", "el país", "el mapa", "el parlamento regional", "la agricultura", "los compatriotas", "el portátil", "el vicio", "el camión", "el poste de luz", "la pasarela", "la carrera", "el altavoz", "la sonrisa", "el hígado", "el ser vivo", "la esperanza de vida", "los alimentos", "la calidad de vida", "el seguro de vida", "el vacío", "la conversación de capacitación", "el profesor", "la pasión", "la cuerda", "el agua del grifo", "el rendimiento", "el lema", "la dirección", "la guía", "la corrección de pruebas", "la lectura", "la vértebra lumbar", "el volante", "la luminaria", "el letrero luminoso", "la luz", "la cadena de luces", "el sable de luz", "el hobby", "el poema de amor", "el amante", "el amor", "la disolución", "la canción", "la entrega", "la mentira", "el aire", "el dirigible", "la contaminación del aire", "la resistencia del aire", "la fuerza aérea", "el colchón de aire", "la mentira", "el mentiroso", "el deseo", "el estómago", "el campo magnético", "el magnetismo", "la comida", "mayo", "la ponche de mayo", "la pintura", "el pintor", "la pintura", "el libro para colorear", "el pintor", "la mamografía", "el mandato", "la mandarina", "el hombre", "el equipo", "el cuento de hadas", "el margen", "el mercado", "la marca", "el puesto de mercado", "el martini", "la máquina", "el masajista", "la masajista", "el masaje", "el material", "las matemáticas", "la funda del colchón", "la boca (de un animal)", "el ratón", "el clic del ratón", "la alfombrilla del ratón", "la medalla", "los medios", "los medicamentos", "la medicina", "el producto médico", "el medicamento", "el nivel del mar", "el mar", "el conejillo de indias", "el agua de mar", "el valor añadido", "la casa de varias familias", "la harina", "la casa de varias generaciones", "la habitación multiusos", "la milla", "el campeonato", "la cantidad", "el ser humano", "el comedor universitario", "el menú", "el menú", "el mentor", "la feria", "el bloque de cuchillos", "el metal", "la metamorfosis", "el método", "el metro", "el microchip", "el microondas", "la leche", "el café con leche", "el batido de leche", "la Vía Láctea", "la suavidad", "el ejército", "el millón", "la minoría", "el mineral", "el agua mineral", "el menos", "el minuto", "el abuso", "la monstruosidad", "el contratiempo", "la misión", "la compañera de habitación", "la compasión", "el centro", "el centro", "el mensaje", "la colaboración", "la tienda de muebles", "la gaviota", "el momento", "la luz de la luna", "lunes", "la mañana", "el motor", "el molino", "el muesli", "la visita al museo", "la música", "el músico", "el gorro", "el vecindario", "el vecino", "la tutoría", "la noche", "el club nocturno", "la vida nocturna", "el silencio de la noche", "el postre", "el mensaje", "las noticias", "la cercanía", "las uñas", "el nombre", "la placa de identificación", "la cicatriz", "la naturaleza", "la catástrofe natural", "la navegación", "la red", "la curiosidad", "el nivel", "el alimento", "el cuaderno de notas", "la llamada de emergencia", "noviembre", "el fideo", "el animal de granja", "el oasis", "la fruta", "la escuela secundaria", "el piso superior", "los muslos", "el ciclo superior", "la autoridad", "la oreja", "el aceite", "el público", "la apertura", "la revelación", "el horno", "el desmayo", "el festival de octubre", "el festival de octubre", "las aceitunas", "el tío", "la ópera", "la ópera", "la opereta", "las naranjas", "el orden", "la orquesta", "el órgano", "la orientación", "el lugar", "la Pascua", "la Pascua", "los conejos de Pascua", "el mar Báltico", "la Pascua", "la ovación", "el palacio", "la palmera", "el palacio", "la avería", "el loro", "la papelera", "el papel", "el pimiento", "el desfile", "la perfumería", "el parque", "el estacionamiento", "la fiesta", "la patente", "el ahijado", "la pausa", "el babuino", "el caballo", "el deber", "la curita", "el cuidado", "la instalación de cuidado", "el deber", "la pimienta", "el caballo", "la planta", "la plantación", "el piloto", "la piloto", "la píldora", "la cerveza clara", "el bar", "la pizza"
+                    // ...
+                ],
+                de: [
+                    // 150 sustantivos en alemán
+                    "der Abend", "die Adresse", "das Angebot", "die Angst", "die Antwort", "die Apotheke", "der Apfel", "die Arbeit", "das Auge", "der Ausflug", "das Auto", "die Bäckerei", "der Bahnhof", "der Ball", "der Baum", "das Bein", "die Blume", "der Boden", "das Boot", "das Buch", "das Büro", "der Bus", "das Café", "das Datum", "die Decke", "der Dienstag", "die Dose", "der Drucker", "die Ecke", "die E-Mail", "das Ei", "das Ende", "der Erfolg", "die Fabrik", "die Familie", "das Fenster", "der Finger", "die Frage", "der Freund", "das Frühstück", "die Fußballmannschaft", "das Fußballspiel", "die Garage", "die Geburt", "der Geburtstag", "das Geld", "die Geschichte", "der Geschmack", "das Geschenk", "das Gesicht", "die Gesundheit", "die Gitarre", "die Glückwünsche", "der Gruß", "das Haar", "der Hals", "das Handy", "die Handtasche", "der Himmel", "das Hobby", "das Hotel", "das Jahr", "der Januar", "die Jeans", "der Juli", "die Kamera", "das Kino", "das Kleid", "der Koffer", "die Kreditkarte", "der Kuchen", "der Kunde", "die Lampe", "die Landschaft", "die Laterne", "der Lehrer", "die Leidenschaft", "das Leben", "das Lied", "das Licht", "die Liebe", "das Loch", "die Luft", "das Maß", "die Mauer", "der Mai", "die Mütze", "die Menge", "das Meer", "die Messe", "der Mittag", "der Monat", "die Mütze", "das Museum", "der Name", "die Nacht", "die Nase", "das Netz", "die Notiz", "die Nummer", "das Obst", "das Ohr", "der Oktober", "das Paket", "der Park", "das Pferd", "der Platz", "das Poster", "der Preis", "das Problem", "das Produkt", "die Prüfung", "das Rad", "der Regen", "das Restaurant", "das Rezept", "die Reise", "der Rock", "die Sache", "der Samstag", "der Sand", "der Schirm", "das Schiff", "der Schinken", "der Schnee", "die Schokolade", "der Schuh", "der Schüler", "das Schwein", "die Schwester", "der See", "die Seite", "der September", "der Ski", "der Sommer", "die Sonne", "der Sonntag", "das Spiel", "der Sport", "der Staat", "das Steak", "die Stadt", "der Stein", "der Stiefel", "der Strand", "das Studio", "der Stuhl", "das Taxi", "der Tee", "das Telefon", "der Termin", "das Tier", "das Ticket", "das Tor", "der Tourist", "das Training", "die Tür", "das T-Shirt", "der Typ", "das Ufer", "die Uhr", "der Urlaub", "der Vater", "das Velo", "das Verkehrsmittel", "die Verpackung", "die Versicherung", "die Villa", "das Visum", "die Vorspeise", "die Wand", "das Warenhaus", "die Wäsche", "das Wasser", "das Wetter", "das Wochenende", "der Wohnort", "die Wohnung", "die Wolke", "die Woche", "die Wurst", "die Zahl", "die Zeit", "das Ziel", "das Zimmer", "der Zoo", "der Zucker", "das Zentrum", "die Zeitung", "die Zitrone", "die Zunge", "die Zukunft", "das Zeugnis", "die Zigarette", "der Zug", "die Zwiebel", "das Abendessen", "das Abenteuer", "das Abitur", "die Abteilung", "die Adresse", "der Affe", "die Agentur", "das Album", "die Allee", "die Allergie", "das Alpenland", "das Alphabet", "der Alptraum", "die Ampel", "der Anblick", "das Angebot", "der Angriff", "das Angstgefühl", "der Anker", "die Ansicht", "das Antiquariat", "der Anzug", "der Apfel", "das Aquarium", "der Arm", "die Armbanduhr", "die Art", "das Asyl", "die Aufgabe", "die Aufmerksamkeit", "das Auge", "der Augenblick", "die Ausbildung", "der Ausflug", "der Ausgang", "der Ausweis", "die Auswahl", "die Autobahn", "die Autogrammkarte", "die Automarke", "das Autorennen", "das Autohaus", "der Bach", "der Backofen", "die Bäckerei", "die Badewanne", "das Badetuch", "das Bahnsteig", "der Balkon", "die Banane", "die Bank", "die Banknote", "das Bankkonto", "das Bankwesen", "die Bar", "das Bargeld", "der Bart", "die Basis", "der Bau", "die Bäuerin", "das Bauernhaus", "der Baum", "das Bauteil", "der Beamte", "die Beantwortung", "der Bearbeiter", "der Beat", "der Bedarf", "das Bedürfnis", "die Beeinträchtigung", "die Begabung", "die Begründung", "das Begleitschreiben", "der Behälter", "das Behörde", "die Behandlung", "die Behauptung", "das Beispiel", "die Bekanntschaft", "die Beleuchtung", "die Belohnung", "die Belüftung", "das Benzin", "die Beratung", "der Bericht", "das Berufsleben", "die Berührung", "das Berufsfeld", "die Beschäftigung", "die Bescheinigung", "der Beschluss", "der Besitzer", "die Bestätigung", "das Besteck", "der Betrag", "der Betreuer", "die Betreuung", "die Bevölkerung", "die Beziehung", "der Beweis", "die Bewerbung", "das Bewerbungsschreiben", "die Bewerbungsunterlagen", "die Bibliothek", "das Bild", "der Bildschirm", "die Birne", "die Bitte", "der Blick", "der Block", "das Blut", "der Boden", "der Bonus", "die Börse", "das Bord", "die Bratpfanne", "das Brautkleid", "der Brei", "der Brief", "der Briefkasten", "der Briefumschlag", "die Brille", "das Brötchen", "der Bruder", "die Brücke", "die Brust", "die Buchhandlung", "das Buchstaben", "das Budget", "die Büchse", "das Bügeleisen", "die Büroklammer", "das Bürogebäude", "der Busch", "die Butter", "der Cappuccino", "der Champagner", "das Chaos", "das Charisma", "die Chance", "die Chefin", "die Chilischote", "das Chlor", "das Chor", "der Christbaum", "die Creme", "das Croissant", "die Currywurst", "die Dachterrasse", "das Dach", "der Dackel", "der Dampf", "das Datum", "der Daumen", "das Debüt", "die Decke", "die Dekoration", "der Deodorant", "die Dependance", "das Design", "die Dessous", "der Detektiv", "der Dezember", "die Diät", "das Diaphragma", "die Dichtung", "die Differenz", "die Digitaluhr", "das Diplom", "die Direktion", "der Direktor", "das Display", "der DJ", "der Doktor", "die Dokumentation", "die Domäne", "der Donnerstag", "das Dorf", "die Dose", "die Drachenfrucht", "das Drama", "die Drehung", "der Drucker", "das Drumherum", "das Duell", "der Duft", "die Dummheit", "die Ecke", "die Ehe", "das Ehepaar", "die Ehrlichkeit", "die Eiche", "die Eidechse", "das Eiweiß", "das Einhorn", "die Einladung", "die Einrichtung", "das Einkommen", "das Einmaleins", "der Einmarsch", "die Einsamkeit", "die Einschätzung", "die Einsicht", "der Einspruch", "die Eintrittskarte", "das Einzelzimmer", "der Einzug", "die Eisdiele", "die Eisdiele", "die Eitelkeit", "die Eigenschaft", "die Eile", "das Einkaufszentrum", "der Einwohner", "die Einwilligung", "die Eitelkeit", "der Ekel", "der Elch", "die Elektrizität", "das Element", "der Elternabend", "die Elternschaft", "der Elternteil", "die Emaille", "der Empfänger", "das Engagement", "die Enkelin", "das Enzym", "die Erbse", "das Erdgeschoss", "die Erdnuss", "die Erdung", "die Erscheinung", "die Erwartung", "die Erziehung", "die Eselsbrücke", "das Essen", "der Essig", "die Etage", "die Eule", "das Experiment", "die Expertise", "der Experte", "die Expedition", "die Fabrik", "die Fähigkeit", "der Fahrer", "das Fahrzeug", "die Familie", "der Fantasie", "die Fantasie", "die Farbe", "das Fass", "die Fassade", "das Faszinosum", "die Feder", "das Feedback", "die Feier", "die Feigheit", "der Feind", "das Feld", "der Felsen", "die Fernbedienung", "das Fernsehen", "die Fernweh", "die Fertigkeit", "das Fest", "die Festung", "das Feuer", "die Fichte", "die Figur", "das Fischgericht", "der Fischteich", "das Fitnessstudio", "der Flaschenöffner", "das Fleisch", "das Fließband", "die Flöte", "das Flugzeug", "das Flussufer", "der Fluss", "die Flut", "das Fohlen", "die Folge", "der Fön", "das Foto", "der Fotograf", "die Fotografie", "das Fotoalbum", "der Frachter", "das Fräulein", "das Französisch", "der Freund", "die Freundschaft", "die Freude", "der Frieden", "das Friedhof", "die Frisbee", "die Frisur", "das Frühjahr", "der Frühling", "die Frucht", "das Frühstück", "die Führung", "der Führerschein", "die Fülle", "das Fundament", "die Funkstille", "die Fußgängerzone", "das Fußballspiel", "der Fußgänger", "die Galaxie", "die Galerie", "das Gänseblümchen", "die Garage", "die Garderobe", "der Garten", "der Gashebel", "das Gasthaus", "das Gebäck", "die Geburt", "die Geburtstagsfeier", "das Geburtstagsgeschenk", "die Geduld", "das Gefängnis", "der Gefallen", "das Gefühl", "die Gegensprechanlage", "der Geist", "das Geld", "das Gelände", "die Geltung", "das Gemälde", "der Gemüsegarten", "das Gemüse", "der General", "das Genie", "die Gentechnik", "der Gentleman", "das Gewehr", "das Gewicht", "die Gewohnheit", "der Glanz", "das Glas", "das Gleis", "das Glück", "das Glücksspiel", "die Gnade", "der Goldfisch", "der Gottesdienst", "die Gourmetküche", "das Grab", "die Größe", "der Groll", "der Groschen", "das Grün", "das Grüppchen", "die Grundlage", "der Grundriss", "die Gruppe", "das Gruppenfoto", "die Grütze", "der Gruß", "der Gründer", "das Gulasch", "das Guthaben", "die Gymnastik", "die Gynäkologie", "die Hacke", "das Haferflocken", "der Hafen", "der Hahn", "die Hähnchenbrust", "die Halle", "die Haltestelle", "der Hammer", "die Hand", "das Handy", "die Handynummer", "die Handarbeit", "das Handtuch", "das Handwerk", "die Handynummer", "die Harmonie", "das Haar", "das Haarspray", "die Härte", "die Haselnuss", "die Hauptstadt", "der Hauptbahnhof", "der Hauptgang", "der Hausarzt", "das Hausboot", "das Hausmittel", "die Hausnummer", "der Hauswart", "die Haut", "die Hebamme", "der Hecht", "die Heilung", "die Heimat", "die Heimatstadt", "der Heizkörper", "das Hemd", "der Hengst", "das Herbstwetter", "das Herrenhaus", "das Herz", "die Herzlichkeit", "die Hilfe", "das Himmelbett", "die Himbeere", "die Hinrichtung", "der Hinweis", "die Hochzeit", "der Hof", "die Hoffnung", "der Hocker", "die Höhe", "das Höhlensystem", "das Hören", "das Hotel", "das Huhn", "die Hundeleine", "das Hundehalsband", "die Hütte", "das Iglu", "die Illusion", "die Inflation", "das Inland", "das Instrument", "der Internist", "das Internet", "die Interpretation", "der Inselbewohner", "die Inspiration", "das Interview", "der Intimbereich", "das Inventar", "die Investition", "die Isolation", "die Jahreszeit", "das Jahrhundert", "die Jahrhundertwende", "der Januar", "die Japanisch", "der Jasmin", "das Jenseits", "der Jogurt", "das Jogging", "die Joghurt", "der Joker", "der Journalist", "das Journal", "die Jugend", "der Juni", "das Jungtier", "der Junggeselle", "die Jungfrau", "die Jurte", "das Kabel", "der Käfig", "der Kaiser", "der Kaktus", "die Kälte", "das Kaminfeuer", "der Kämpfer", "die Kanne", "die Kapazität", "das Kapitel", "die Kapsel", "das Karussell", "das Kasino", "der Käse", "die Kassette", "der Kasten", "die Katze", "die Kategorie", "das Kätzchen", "die Kehle", "das Keks", "die Keksdose", "die Kekskrümel", "die Keksmischung", "der Keksriegel", "das Kellergeschoss", "der Keller", "der Kellner", "die Kelter", "die Kette", "die Kiefer", "die Kirsche", "die Kiste", "das Kissen", "der Kitzel", "der Klang", "die Klarheit", "die Klasse", "der Klassiker", "die Klausur", "die Klaue", "das Klima", "das Knie", "das Knochen", "der Knoten", "das Kochbuch", "der Kochtopf", "die Kollision", "der König", "das Königreich", "die Konkurrenz", "das Konzept", "das Konto", "die Konversation", "die Körnung", "der Körper", "der Korb", "das Kostüm", "das Kraftfahrzeug", "der Kraftstoff", "die Kralle", "der Kratzer", "die Kreativität", "das Kreuz", "die Krim", "der Krimi", "die Krise", "die Kristallkugel", "die Krone", "die Kruste", "die Küche", "die Küchenutensilien", "die Kuh", "die Kultur", "der Kunde", "der Kundenservice", "der Kunstkurs", "der Kunsthändler", "das Kunstwerk", "die Kunstausstellung", "die Kunststoff", "das Kupfer", "die Kurve", "die Kutsche", "die Küste", "die Laborarbeit", "das Laboratorium", "der Laden", "der Ladendiebstahl", "die Ladestation", "das Lager", "die Lampe", "die Landschaft", "die Landschaftsmalerei", "der Landsmann", "das Land", "die Landkarte", "der Landtag", "die Landwirtschaft", "die Landsleute", "der Laptop", "das Laster", "der Lastkraftwagen", "der Laternenpfahl", "der Laufsteg", "der Lauf", "der Lautsprecher", "das Lächeln", "die Leber", "das Lebewesen", "die Lebenserwartung", "die Lebensmittel", "die Lebensqualität", "die Lebensversicherung", "die Leere", "das Lehrgespräch", "der Lehrer", "die Leidenschaft", "die Leine", "das Leitungswasser", "die Leistung", "das Leitmotiv", "die Leitung", "der Leitfaden", "das Lektorat", "die Lektüre", "der Lendenwirbel", "das Lenkrad", "die Leuchte", "die Leuchtreklame", "das Licht", "die Lichterkette", "das Lichtschwert", "die Liebhaberei", "das Liebesgedicht", "der Liebhaber", "die Liebe", "die Liederlichkeit", "das Lied", "die Lieferung", "die Lüge", "die Luft", "das Luftschiff", "die Luftverschmutzung", "der Luftwiderstand", "die Luftwaffe", "die Luftmatratze", "die Lüge", "der Lügner", "die Lust", "der Magen", "das Magnetfeld", "der Magnetismus", "die Mahlzeit", "der Mai", "die Maibowle", "die Malerei", "der Maler", "die Malfarbe", "das Malbuch", "der Maler", "die Mammographie", "das Mandat", "die Mandarine", "der Mann", "die Mannschaft", "das Märchen", "die Marge", "der Markt", "die Markierung", "der Marktstand", "der Martini", "die Maschine", "der Masseur", "die Masseuse", "die Massage", "das Material", "das Mathematik", "der Matratzenbezug", "das Maul", "die Maus", "der Mausklick", "das Mauspad", "die Medaille", "die Medien", "die Medikamente", "die Medizin", "das Medizinprodukt", "das Medikament", "der Meeresspiegel", "das Meer", "das Meerschweinchen", "das Meerwasser", "der Mehrwert", "das Mehrfamilienhaus", "das Mehl", "das Mehrgenerationenhaus", "das Mehrzweckzimmer", "die Meile", "die Meisterschaft", "die Menge", "der Mensch", "die Mensa", "das Menü", "das Menü", "der Mentor", "die Messe", "der Messerblock", "das Metall", "die Metamorphose", "die Methode", "die Metro", "der Mikrochip", "die Mikrowelle", "die Milch", "der Milchkaffee", "der Milchshake", "die Milchstraße", "die Milde", "der Militär", "die Million", "die Minderheit", "das Mineral", "die Mineralwasser", "das Minus", "die Minute", "der Missbrauch", "die Missgeburt", "das Missgeschick", "die Mission", "die Mitbewohnerin", "das Mitleid", "die Mitte", "der Mittelpunkt", "die Mitteilung", "die Mitwirkung", "das Möbelhaus", "die Möwe", "der Moment", "das Mondlicht", "der Montag", "der Morgen", "der Motor", "die Mühle", "das Müsli", "der Museumsbesuch", "die Musik", "der Musiker", "die Mütze", "die Nachbarschaft", "der Nachbar", "die Nachhilfe", "die Nacht", "die Nachtclub", "das Nachtleben", "die Nachtruhe", "die Nachspeise", "die Nachricht", "das Nachrichten", "die Nähe", "die Nägel", "der Name", "das Namensschild", "die Narbe", "die Natur", "die Naturkatastrophe", "die Navigation", "das Netz", "die Neugierde", "das Niveau", "die Nahrung", "das Notizbuch", "der Notruf", "der November", "die Nudel", "das Nutztier", "die Oase", "das Obst", "die Oberschule", "das Obergeschoss", "die Oberschenkel", "die Oberstufe", "die Obrigkeit", "das Ohr", "das Öl", "die Öffentlichkeit", "die Offenheit", "die Offenbarung", "der Ofen", "die Ohnmacht", "die Oktoberfest", "das Oktoberfest", "die Oliven", "der Onkel", "das Opernhaus", "die Oper", "die Operette", "die Orangen", "die Ordnung", "das Orchester", "die Orgel", "die Orientierung", "der Ort", "die Osterzeit", "der Ostern", "die Osterhasen", "die Ostsee", "die Ostern", "die Ovation", "der Palast", "die Palme", "der Palast", "die Panne", "der Papagei", "der Papierkorb", "das Papier", "die Paprika", "die Parade", "die Parfümerie", "der Park", "der Parkplatz", "die Party", "das Patent", "das Patenkind", "die Pause", "der Pavian", "das Pferd", "die Pflicht", "das Pflaster", "die Pflege", "die Pflegeeinrichtung", "die Pflicht", "der Pfeffer", "das Pferd", "die Pflanze", "die Pflanzung", "der Pilot", "die Pilotin", "die Pille", "das Pils", "das Pinten", "die Pizza"
+                    // ...
+                ]
+            },
+            errores:{
+                es:[],
+                de:[]
+            },
+            curso:{
+                es:["Desmantelamiento", "Aventura máxima", "Pero", "Entregar", "terminado", "coordinado", "cerrar sesión en", "cerrar sesión", "completo", "Diploma", "Departamento", "respecto", "Afrim", "Términos y condiciones", "similar", "Comportamiento", "activo", "todo", "todo", "solo", "todos", "todo", "todo", "Cada día", "como", "entonces", "edad", "alternativa", "casa de retiro", "oficina gubernamental", "en tu lugar", "en tu lugar", "analizar", "diferente", "reconocer", "Comienzo", "indicar", "oferta por eso", "comprobado", "comprobado", "agradable", "agradable a veces", "llamado", "dirigido", "empleado", "garrapata", "registro", "Registro", "llamar", "anuncio", "adquirir", "Vistas", "Solicitud", "respondió", "Número", "para empezar", "adaptarse", "Trabajar", "Experiencia laboral", "desempleo", "enojado", "atractivo", "también", "Audioguía", "Tarea", "Tareas", "observó", "comido", "atento", "escribe", "inscripción", "rendirse", "Sistema de entrenamiento", "trabajadores temporales", "extranjero", "es suficiente", "aparte de eso", "afuera", "elegir", "auto", "auto", "Carretera", "máquinas expendedoras", "automáticamente", "Aydin", "Hornear", "pelota", "bancos", "barba", "construir", "árboles", "construye", "observar", "oficial", "funcionarios", "funcionario público", "solicitar", "gracias", "medio", "liberado", "encontrado. Conversar", "entusiasta", "mantener", "tratar", "discapacidad", "autoridad", "en", "es diferente para mi", "Ambos", "Ejemplo", "consiguió", "recibir", "Recompensas", "necesidad", "necesario", "usar", "observar", "aconseja", "Tutor", "Ofertas de consultoría", "listo", "título", "tomado en cuenta", "Profesión", "profesional", "Cualificación profesional", "Consejos profesionales", "calma", "Aviso", "Certificados", "decidido", "Descripción", "ocupado", "especial", "particularmente", "Sala de reuniones", "mejor", "ciertamente", "visita", "los involucrados", "cuidado", "mover", "evaluar", "asequible", "pagar", "biblioteca", "Fotos", "un poco", "permanecer", "restos", "Aspecto", "anteojera", "Disparates", "Puntos de bonificación", "necesidad", "Cartero", "traer", "Libro", "ciudadanos", "aprox.", "Cafetería", "controlar", "incluido", "por eso", "con eso", "lo", "la aventura", "la oferta", "la sangre", "la grasa", "el pastelito", "el sentimiento", "la conversación", "la entrevista", "genial", "¡Es gracioso!", "el clima", "eso vale la pena para mi", "el miembro", "el organo", "el cuarto", "eso", "constantemente", "dura", "además", "definir", "democracia", "democráticamente", "demostración", "aquellos", "pensar", "la presión arterial", "la presión", "el progreso", "el curso de integración", "Año", "el maestro", "el musculo", "la desventaja", "el pulso", "el fumador", "el paso", "la rutina diaria", "la parte", "el terapeuta", "la diferencia", "la comparación", "la ventaja", "la coincidencia", "lo mismo / lo mismo / lo mismo", "Por esta razón", "el tratamiento", "el movimiento", "la evaluación", "los cheques", "la dieta", "la prisa", "la recuperación", "la dieta", "la financiación", "el peligro", "el hábito", "la trama; accion; tienda o negocio", "el desafío", "los desafíos", "la vacuna", "la industria", "infancia", "la enfermedad", "el estado de ánimo", "la actuación", "el metodo", "la membresía", "la posibilidad", "la operación", "la reacción", "el orden cronológico", "el papel", "la ronda", "el hombro", "la participación", "el terapeuta", "la terapia", "la visión general", "la precaución", "el calor", "la formación adicional", "el zachlung", "pago", "la destrucción", "Ladrón", "discusión", "disciplina", "disciplinado", "pero", "documento", "allá", "afuera", "tu usas", "a través de", "nombre de pila", "bicicletas eléctricas", "también", "real", "no importa", "Voluntariado", "Características", "de hecho", "Apurarse", "ladrón", "simplemente", "Entrada", "usado", "alguno", "una vez", "planificado", "incluido", "acordado", "Residente", "Oficina de Registro de Residentes", "Solo", "soltero", "ponerse al día", "electrodomésticos", "recomendar", "energía", "comprometer", "Distancias", "más crucial", "Decisión", "desarrollado", "cualquiera", "experiencia", "Éxito", "exitoso", "necesario", "añadir", "Resultados", "recibo", "recordar", "reconocer", "conocimiento", "preguntar", "Permiso", "sufrir", "hacer posible", "grave", "abierto", "alcanzar", "alcanzó", "Sustituto", "primero", "Esperanzas de heredar", "decir", "Educación", "lograr", "las cosas están mejorando", "Las cosas están mejorando mucho", "¡funciona!", "Comer", "aproximadamente", "algo", "para siempre", "eternidad", "experto", "Explosiones", "extrapunk", "habilidades", "conducir", "Bicicleta", "freno de bicicleta", "ciclistas femeninas", "Timbres de bicicleta", "Carril bici", "factores", "pendiente", "si es necesario", "Familia", "familias", "encontró", "Color", "comprender", "casi", "perezoso", "Comentario", "desaparecido", "Ventana", "Mando a distancia", "firmemente", "Puesto permanente", "bajo en grasas", "noche de cine", "Películas", "financiero", "financiación", "encontrar", "compañía", "Datos de aptitud", "reloj deportivo", "huir", "fluir", "viajes aéreos", "siguiente", "Diapositivas", "apoyar financieramente", "Formación adicional", "Preguntas", "ser feliz", "alegre", "primavera", "agregar", "sentir", "dirigir", "bastante", "incluso", "Edificio", "dar", "tarifa", "agrada", "contra", "ir", "pertenecer", "ocasionalmente", "vale la pena", "dominado", "generaciones", "disfruté", "suficiente", "Platos", "Monto total", "Negocio", "Historia", "los cerrados", "velocidad", "Compañía", "legalmente", "Conversación", "Ronda de discusión", "diseñado", "chequeo de salud", "hecho", "bebidas", "apartado", "preferido", "acostumbrarse a", "Hábitos", "si es necesario", "derramar", "aplica", "creer", "tratar", "felicitar", "encontró", "Feria de startups", "Derechos fundamentales", "básicamente", "tener", "detener", "sostiene", "mano", "estrechar la mano", "Bolsos", "artesana", "hecho a mano", "colgar", "tiene", "ha analizado", "ha marcado", "ha seleccionado", "ha notado", "ha tratado", "ha requerido", "ha reconocido", "comprobado", "ha sanado", "ha medido", "ha comprobado", "hizo daño", "estaba en silencio", "prevenido", "felicitado", "ha intentado", "hizo un esfuerzo", "ha sido probado", "me sentí cómodo", "participó", "frecuentemente", "partera", "camino a casa", "él reacciona", "ha consumido", "Ayuda", "útil", "obstáculos", "uno tras otro", "Notas ciento noventa y tres", "buscar", "escucha", "humor", "marco la pagina", "A ellos", "individual", "información", "Material informativo", "incluido", "dentro", "inspirado", "intenso", "interesante", "interés", "interesado", "internacional", "conexión a internet", "entrevista", "ha hecho frente", "¡sí, todavía!", "De todos modos", "sin embargo", "alguien", "candidatos", "Sudadera", "Desarrollo profesional", "desastre", "comprar", "Galletas", "conoció", "Matrícula", "ropa, ropa", "claro", "aclarar", "Clase", "palos", "sonidos", "Cocinar", "Colegas", "colega", "venir", "comunicar", "complicado", "compromiso", "Conflictos", "Gestor de conflictos", "poder", "podría", "consecuencia", "contacto", "concepto", "físicamente", "contabilidad de costos", "vehículo de motor", "Departamento de Investigación Criminal", "crítica", "Pastel", "cuidarse", "Clientes", "Servicio al cliente", "abandonar", "anuncia", "Cursos", "sonrió", "Posición", "Países", "camino rural", "largo", "mucho tiempo", "largo plazo", "dejar", "vida", "alimentos", "Calidad de vida", "delicioso", "fácil", "desafortunadamente", "poder pagar", "dirigir", "Aprender", "leer", "último", "Luz", "más extenso", "Salario", "vale la pena", "Solución", "orientado a soluciones", "vamos", "Aire", "Deseo", "divertido", "hacer", "Fuerza", "tarifa de recordatorio", "Recordatorio", "Alguno", "A veces", "Escasez", "máximo", "medicamento", "más", "varios", "mayoría", "varias veces", "Libertad de expresión", "mayoría", "principalmente", "Confirmación de registro", "Informe", "Gente", "observó", "inusual", "medida", "Confesión de Miccu", "a mí", "a mí", "a mí", "mieren", "Alquilar", "Inquilino", "Antecedentes de migración", "Militar", "mín.", "minoría", "Minorías", "a mí", "malentendido", "con", "traer", "conciudadanos", "comunicado", "Miembro", "Participar", "participar", "Muebles", "movilidad", "teléfono móvil", "desear", "desear", "desear", "moderno", "momento", "Pase mensual", "monitor", "motivación", "motivado", "Motor", "Motor", "motocicleta", "Scooter", "bicicletas de montaña", "Basura", "oral", "monedas", "museo", "músico", "debe", "debe", "debe", "debe", "tuvo que", "después", "atrapado", "Pago adicional", "a saber", "húmedo", "Naturaleza", "Junto a", "negativo", "llevar", "tender", "¡No, todo está bien!", "nombrar", "llamadas", "lindo", "Neuberg", "Neuberg", "Neuberg", "Neuberg", "nuevo", "nuevo", "nuevo", "no", "no", "no", "no", "no", "no", "No fumador", "nunca", "llevar", "niña", "niña", "aún", "Notas", "número", "entonces", "solo", "útil", "si", "a pesar de", "o", "abierto", "abierto", "público", "oficial", "a menudo", "más a menudo", "sin", "DE ACUERDO", "Olaf", "en línea", "pareja", "Pase de estacionamiento", "fiesta", "Parvati", "sucedió", "encaja", "Descansos", "perfecto", "persona", "tarjeta de identificación", "personas", "personal", "planta", "Cuidado", "Enfermero", "auto", "póster", "plan", "Planes", "política", "político", "político", "policía", "puerto", "correo", "Pósters", "Pósters", "Presentación de carteles", "presentación", "Práctica", "Precio", "por", "probar", "probar", "problema", "problemas", "productos", "Conocimientos de programación", "proyecto", "proyectos", "proyecto", "Estado del proyecto", "protesta", "protestas", "protesta", "protocolo", "por ciento", "controlar", "comprobado", "Punto", "Agujas", "puntualidad", "limpieza", "cambiador de carrera", "diatribas", "aconseja", "reaccionar", "realista", "realista", "computadora", "bien", "discurso", "reducir", "regularmente", "Gobierno", "pasaporte", "viajes", "relativo", "religión", "comunidad religiosa", "Comunidades religiosas", "religioso", "Café de reparación", "Café de reparación", "reparar", "reparar", "reparado", "Restaurante", "problema", "correcto", "role", "RTSCHATZ Hoa", "RTSCHATZ", "Consultas", "mensaje de respuesta", "contratiempos", "Consideración", "Tranquilo", "Tranquilo", "tranquilo", "abajo", "Asunto", "decir", "dice", "salif", "bajo en sal", "samir", "recolectar", "recoge", "demasiado", "daño", "crea", "TESORO", "TESORO", "TESORO", "mirar", "Actor", "enviar", "regañado", "dormir", "golpear", "delgado", "cerca", "cierre", "Malo", "Llave", "sucio", "cortes", "más rápido", "más rápido", "ya", "lindo", "escribir", "escribió", "Escribiendo", "Paso", "Graduación escolar", "uniforme escolar", "proteger", "negro", "estar en silencio", "difícil", "dificultades", "nadar", "ver", "ver", "muy", "ser", "ser", "ser", "ser", "su", "su", "desde", "desde", "Página", "mismo", "sí mismo", "Trabajadores por cuenta propia", "Independencia", "Independencia", "raro, extraño", "extraño", "Septiembre", "servicio", "Horarios de servicio", "sí mismo", "haz un esfuerzo", "cúrate a ti mismo", "sentirse bien", "seguro", "Ella", "son", "son", "son", "sensitivo", "sische", "Vecinos de asiento", "reunión", "Escándalos", "esquí", "Pequeño", "Aperitivos", "entonces", "de modo que", "inmediatamente", "incluso", "soldados", "debería", "debería", "debería", "debería", "debería", "debería", "bastante", "Domingo", "asegura", "cuidado", "así como", "de todos modos", "así como", "oficina de bienestar social", "Asistencia social", "ahorrar", "Paseo", "Menú", "especial", "Juego", "jugar", "deporte", "hacer deporte", "club deportivo", "club deportivo", "Idioma", "hablar", "hablar", "habla", "sintió", "Estado", "nacionalidad", "Ciudad", "urbano", "marketing de la ciudad", "Pararse", "permaneció", "establos", "oficina de registro", "constante", "posición", "fortalecer", "estrellas", "en lugar de", "Enchufar", "pararse", "pararse", "se encuentra", "posición", "proporciona", "roba", "Aceptar", "Ánimo", "Calle", "Proveedor de electricidad", "Estudios", "estudiar", "Sillas", "buscar", "Males del sur", "supermercado", "surf", "Dulce", "sistema", "Pizarra", "Rutina diaria", "a diario", "Hablar", "taza", "participar", "Diez", "prueba", "Semana temática", "Muerte", "llevar", "conducir", "fiel", "a pesar de", "TESORO", "TESORO", "hacer", "hacer", "turco", "zapatillas", "Típico", "arriba", "en absoluto", "consideró", "tomar el control", "transferir", "convencido", "por cierto", "Reloj", "Reloj", "evadir", "evadir", "círculo", "gratis", "Ambiente", "Protección ambiental", "absolutamente", "permanente", "inestimable", "inusual", "diferente", "apoyo", "apoyo", "Apoyo", "en el camino", "Vacaciones", "pronunciar", "Variantes", "Evento", "Responsabilidad", "mejorar", "prohibido", "consumir", "sospechosos", "Asociación", "olvidar", "comparar", "detenido", "venta", "vender", "vendedora", "vendido", "Medios de transporte", "extendido", "dejar", "herido", "perdido", "Pérdida", "Propietario", "razonable", "diferente", "desaparecido", "Seguro", "comprendido", "entender", "Contrato", "confiable", "renunciar", "renunciar", "renunciar", "muchos", "Tal vez", "Cuarto", "completamente", "no hay señales de recuperación", "antes", "preparado", "Sugerencia", "precavido", "Discurso", "acusaciones", "crece", "Elección", "advertir", "Por qué", "Qué", "lavar", "sitio web", "cambiar", "ni", "Lejos", "debido a", "guardar", "tirar a la basura", "más capacitado", "adelantarse", "continuar", "convertirse", "valioso", "importante", "contradecir", "como profesionales!", "de nuevo", "repetir", "Semana", "probablemente", "residir", "Casas residenciales", "espacio vital", "vidas", "Departamento", "oficina de vivienda", "enojado", "p.ej", "Recibos de pago", "dentista", "Dibujos", "espectáculo", "muestra", "destruir", "Meta", "Objetivos", "primero", "Tren", "Permiso", "Oficina de Admisiones", "último", "afrontar", "actualmente", "juntos", "En resumen", "vivir juntos", "aceptar", "confiable", "eso es"],
+                de:["Abbau", "Abenteuer Maximal", "Aber", "abgeben", "abgeschlossene", "abgestimmt", "abmelden Ein", "abmeldet", "abschließen", "Abschluss", "Abteilung", "achten", "Afrim", "AGB", "ähnlich", "Aktionen", "aktiv", "all", "alle", "allein", "allen", "aller", "alles", "Alltag", "als", "also", "alter", "Alternative", "Altersheim", "Amt", "an deiner Stelle", "an Ihrer Stelle", "analysieren", "anders", "anerkennen", "Anfang", "angeben", "Angebot Dafür", "angekreuzt", "angekreuzt Aber", "angenehm", "angenehm Manchmal", "angerufen", "angesprochen", "angestellt", "ankreuzen", "anmelden", "Anmeldung", "anrufen", "Ansage", "anschaffen", "Ansichten", "Antrag", "antwortete", "Anzahl", "anzulassen", "anzupassen", "Arbeit", "Arbeitserfahrung", "Arbeitslosigkeit", "ärgerte", "attraktive", "auch", "Audioguide", "Aufgabe", "Aufgaben", "aufgefallen", "aufgegessen", "aufmerksam", "aufschreibt", "Aufschrift", "aufzugeben", "Ausbildungssystem", "Aushilfen", "ausländische", "ausreicht", "außerdem", "außerhalb", "auswählen", "Auto", "Auto ffentliche", "Autobahn", "Automaten", "automatisch", "Aydin", "Backen", "Ball", "Bänken Mein", "Bart", "bauen", "Bäumen", "baut", "beachten", "Beamte", "Beamten", "Beamtin", "beantragen", "bedanken", "bedeutet", "befreit", "begegnet. Besprechen", "begeisterd", "behalten", "behandeln", "Behinderung", "Behörde Die", "bei", "Bei mir ist das anders", "Beide", "Beispiel", "bekamen", "bekommen", "Belohnungen", "benötigen", "benötigt", "benutzen", "beobachten", "berät", "Berater", "Beratungsangebote", "bereit", "berschrift", "berücksichtigt", "Beruf", "beruflichen", "Berufsabschluss", "Berufsberatung", "beruhigen", "Bescheid", "Bescheinigungen", "beschlossen", "Beschreibung", "besetzt", "besonder", "besonders", "Besprechungsraum", "bessere", "bestimmt", "besuchen", "Beteiligten", "betreut", "bewege", "bewerten", "bezahlbaren", "bezahlen", "bibliothek", "Bilder", "bisschen", "bleiben", "bleibt", "Blicke", "blinder", "Blödsinn", "Bonuspunkte", "brauchen", "Briefträger", "bringen", "Buch", "Bürgerinnen", "ca. circa", "Café", "checken", "dabei", "dafür", "damit", "daran", "das Abenteuer", "das Angebot", "das Blut", "das Fett", "das Gebäck", "das Gefühl", "das Gespräch", "das Interview", "das ist klasse", "das ist lustig!", "das Klima", "das lohne mich", "das Mitglied", "das Organ", "das Viertel", "dass", "dauernd", "dauert", "dazu", "definieren", "Demokratie", "demokratisch", "Demonstration", "denen", "denken", "der Blutdruck", "der Druck", "der Fortschritt", "der Integrationskurs", "der Jahr", "der Meister", "der Muskel", "der Nachteil", "der Puls", "der Raucher", "der Schritt", "der Tagesablauf", "der Teil", "der Therapeut", "der Unterschied", "der Vergleich", "der Vorteil", "der Zufall", "derselbe / diesalbe / dasselbe", "deshalb", "die Behandlung", "die Bewegung", "die Bewertung", "die Checken", "die Diät", "die Eile", "die Erholung", "die Ernährung", "die Förderung", "die Gefahr", "die Gewohnheit", "die Handlung", "die Herausforderung", "die Herausforderungen", "die Impfung", "die Industrie", "die Kindheit", "die Krankheit", "die Laune", "die Leistung", "die Methode", "die Mitgliedschaft", "die Möglichkeit", "die Operation", "die Reaktion", "die Reihenfolge", "die Rolle", "die Runde", "die Schulter", "die Teilnahme", "die Therapeutin", "die Therapie", "die Übersicht", "die Vorsorge", "die Wärme", "die Weiterbildung", "die Zachlung", "die Zahlung", "die Zerstörung", "Dieb", "Diskussion", "Disziplin", "disziplinierte", "doch", "Dokument", "dort", "draußen", "due benutzest", "durch", "duzen", "E-Bikes", "ebenfalls", "echt", "egal", "Ehrenamt", "Eigenschaften", "eigentlich", "Eile", "einbrecher", "einfach", "Eingang", "eingesetzt", "einige", "einmal", "einplant", "einschließlich", "einverstanden", "Einwohner", "Einwohnermeldeamt", "Einzige", "einzigen", "einzuholen", "Elektrogeräte Dieses", "empfehlen", "Energie", "engagieren", "Entfernungen", "entscheidender", "Entscheidung", "entstanden", "entweder", "erfahren", "Erfolg", "erfolgreich", "erforderlich", "ergänzen", "Ergebnisse", "Erhalt", "erinnern", "erkennen", "Erkenntnis", "erkundigen", "Erlaubnis", "erleiden", "ermöglichen", "ernst", "eröffnet", "erreichen", "erreicht", "Ersatz", "erst", "Erwartungen", "erzählen", "Erziehung", "erzielen", "es geht schon besser", "es geht schon viel besser", "es geht!", "Essen", "etwa", "etwas", "ewig", "ewigkeit", "Experte", "Explosionen", "ExtraPunk", "Fähigkeiten", "fahren", "Fahrrad", "Fahrradbremse", "Fahrradfahrerinnen", "Fahrradklingeln", "Fahrradwege", "Faktoren", "fällig", "falls erforderlich", "Familie", "Familien", "fanden", "Farbe", "fasse", "fast", "faul", "Feedback", "fehlt", "Fenster", "Fernbedienung", "fest", "Festanstellung", "fettarm", "Filmabend", "Filme", "finanzielle", "Finanzierung", "finden", "Firma", "FitnessDaten", "Fitnessuhr", "fliehen", "fließen", "Flugreise", "folgenden", "Folien", "fördern", "Fortbildungen", "Fragen", "freuen", "fröhlich", "Frühjahr", "füge", "fühlen", "führen", "ganz", "gar", "Gebäude", "geben", "Gebühr", "gefällt", "gegen", "gehen", "gehören", "gelegentlich", "gelohnt", "gemeistert", "Generationen", "genossen", "genug", "Gerichte", "Gesamtbetrag", "Geschäft", "Geschichte", "geschlossene", "Geschwindigkeit", "Gesellschaft", "gesetzlich", "Gespräch", "Gesprächsrunde", "gestaltet", "GesundheitsCheckup", "getaner", "Getränken", "getrennt", "gewählt", "gewöhnen", "Gewohnheiten", "ggf. gegebenfalls", "gießen", "gilt", "glauben", "gönnen", "gratulieren", "gründen Kann", "Gründermesse", "Grundrechte", "grundsätzlich", "haben", "halt", "hält", "Hand", "Händeschütteln Aber", "Handtaschen Ich", "Handwerkerin Unternehmerin", "handwerklich", "hängen", "hat", "hat analysiert", "hat angekreuzt", "hat auswählt", "hat beachtet", "hat behandelt", "hat benötigt", "hat erkannt", "hat gecheckt", "hat geheilt", "hat gemessen", "hat geprüft", "hat geschadet", "hat geschwiegen", "hat gewarnt", "hat gratuliert", "hat probiert", "hat sich angestrengt", "hat sich getestet", "hat sich wohlgefühlt", "hat teilgenommen", "häufig", "Hebamme", "Heimweg", "het reagiert", "het verbraucht", "Hilfe", "hilfreich", "Hindernissen", "hintereinander", "Hinweise einhundertdreiundneunzig", "holen", "hört", "Humor", "ich ankreuze die Seite", "Ihnen", "individuelle", "info", "Infomaterial", "inkl", "innerhalb", "inspiriert", "intensiven", "interessant", "Interesse", "interessiert", "internationale", "Internetverbindung", "Interview", "ist zurechtgekommen", "ja, immer noch!", "Jedenfalls", "jedoch", "jemand", "Kandidatinnen", "Kapuzenpulli", "Karriereentwicklung", "Katastrophe", "kaufen", "Kekse", "kennengelernt", "KfzKennzeichen", "Klamotten, Kleidung", "klare", "klären", "Klasse", "klebt", "klingt", "Kochen", "Kollegen", "Kollegin", "kommen", "kommunizieren", "kompliziert", "Kompromiss", "Konflikte", "Konfliktmanager", "können", "konnten Mir", "Konsequenz", "kontaktieren", "Konzept", "körperlich", "kostenabrechnung", "Kraftfahrzeug", "Kriminalpolizei", "Kritik", "Kuchen", "kümmern", "Kunden", "Kundendienst", "kündigen", "kündigt", "Kurse", "lächelte", "Lage", "Länder", "Landstraße", "lang", "lange zeit", "langfristig", "lassen Haben", "leben", "Lebensmitteln", "Lebensqualität", "leckeren", "leich", "leider", "leisten", "leiten", "Lernen", "lesen", "letzten", "Licht", "lnger", "Lohn", "lohnen", "Lösung", "lösungsorientiert Konfliktgespräche", "lsst", "Luft", "Lust", "lustig", "machen", "Macht", "Mahngebühr", "Mahnung", "Manche", "Manchmal", "Mangel", "maximal", "Medikamenten", "mehr", "mehrere", "Mehrheit", "mehrmals", "Meinungsfreiheit Afrim", "meisten", "meistens", "Meldebestätigung", "Meldung", "Menschen", "merkte", "merkwürdig", "messen", "Miccuerständnis Edward", "mich", "mich Ich", "mich Jede", "mieren", "Miete", "Mieter", "Migrationshintergrund", "Militär", "Min", "Minderheit", "Minderheiten Afrim", "mir", "Missverständnis", "mit", "mitbringen", "Mitbürgerinnen", "mitgeteilt Wenn", "Mitglied", "Mitmachen", "mitmachen Zu", "Möbel", "Mobilität", "Mobiltelefon Könnt", "möchte", "möchte Edward", "möchten", "moderne", "Moment", "Monatskarte", "Monitor", "Motivation", "motiviert", "Motor", "Motor Sie", "Motorrad", "Motorroller", "Mountainbikes", "Müll", "mündlich", "Münzen", "Museum Manche", "Musiker", "muss", "muss Während", "müssen", "müssen Edward", "musste", "nach", "nachgeholt Tomas", "Nachzahlung", "nämlich", "nass Ein", "Natur", "Neben", "negativ", "nehmen", "neigen", "Nein, alles gut!", "nennen", "nennt", "nett", "Neuberg", "Neuberg Aber", "Neuberg Sie", "Neubergs", "neue", "neuen", "neues", "nicht", "nicht Die", "nicht Eine", "nicht Hören", "nicht Jetzt", "nicht Vielleicht", "Nichtraucherin", "nie", "nimmst Tobias", "Nina", "Ninas", "noch", "Notizen", "Nummer", "nun", "nur", "nützlich", "ob", "obwohl", "oder", "offen", "offenes", "öffentlichen", "offiziellen", "oft", "öfter", "ohne", "okay", "Olaf", "online", "paar", "Parkausweis", "Partei", "Parvati", "passiert", "passt", "Pausen", "perfekt", "Person", "Personalausweises Ich", "Personen", "persönlichen", "pflanzen", "Pflege", "Pfleger", "Pkw", "Plakat", "planen", "Plne", "Politik Es", "politischen", "politisches", "Polizei", "portieren Der", "Post", "Poster", "Poster Heinz", "Posterpräsentation", "Präsentation", "Praxis", "Preis", "pro", "probieren", "probieren Edward", "Problem", "Probleme", "Produkten ber", "Programmierkenntnisse", "Projekt", "Projekten", "Projekts", "Projektstand Zeitplan", "Protest", "Proteste", "protestieren Von", "Protokoll", "Prozent", "prüfen", "prüft", "Punkt", "Punkte", "Pünktlichkeit", "putzen Vergesst", "Quereinsteigerin Bei", "rants", "rät", "reagieren", "realistisch Warum", "realistische", "Rechner Nazan", "Rechte Die", "Rede Die", "reduzieren", "regelmäßig", "Regierung", "Reisepasses", "reist Nina", "relativ", "Religion", "Religionsgemeinschaft", "Religionsgemeinschaften", "religiöse", "Reparaturcafé", "Reparaturcafé Das", "reparieren", "reparieren Ich", "repariert", "Restau", "rger", "richtig", "Rolle Ebenso", "RTSCHATZ Hoa", "RTSCHATZ Hoa", "Rückfragen", "Rückmeldung Die", "Rückschlge", "Rücksicht", "Ruhe", "Ruhe Viele", "ruhig", "runter", "Sache", "sagen", "sagt", "Salif", "salzarm", "Samir", "sammeln Testen", "sammelt", "schade", "schaden", "schafft", "SCHATZ Er", "SCHATZ Luna", "SCHATZ Wie", "schauen", "Schauspieler", "schicken Die", "schimpfte", "schlafen Ich", "schlage", "schlank", "schließen", "Schließung", "Schlimmes", "Schlüssel", "schmutzig", "schneidet", "schneller", "schnellere", "schon", "schön Aber", "schreiben Ich", "schrieben", "Schrift", "Schritt", "Schulabschluss", "Schuluniform Das", "schützen", "schwarzen", "schweigen", "schwieriges", "Schwierigkeiten", "schwimmen Ich", "sehe", "sehen", "sehr", "sein", "sein Ich", "sein Reg", "sein Wenn", "seine", "seinen", "seit", "seitdem", "Seite Unterbrechen", "selben", "selbst", "selbstständig", "Selbstständigkeit", "Selbstständigkeit Der", "selt, seltsam", "seltsam", "September", "Service", "Servicezeiten", "sich", "sich anstrengen", "sich heilen", "sich wohlfühlen", "sicher", "Sie", "sind", "sind Ich", "sind Wieso", "sinnvoll", "sische", "Sitznachbarn", "Sitzung", "Skandale", "Ski", "Small", "Snacks", "so", "sodass", "sofort", "sogar", "Soldaten", "soll", "sollen", "sollen Doris", "sollte", "sollten", "solltest", "sondern", "Sonntag", "sorgt", "sorgte", "sowie", "sowieso", "sowohl", "Sozialamt Auf", "Sozialhilfe", "sparen", "Spaziergang", "Speisekarte", "speziell", "Spiel", "spielen", "Sport", "Sport treiben", "Sportverein", "Sportverein Als", "Sprache", "spreche", "sprechen Findest", "spricht", "spürte", "Staat Ich", "Staatsangehörigkeit", "Stadt", "städtisch", "Stadtmarketing Wir", "Stand", "stand", "Stände Sie", "Standesamt", "ständig", "Standpunkt", "stärken", "Stars Umweltverschmutzung", "statt Zofia", "Stecker Ja", "stehen", "stehen Ich", "steht", "Stelle", "stellt", "stiehlt Der", "Stimme", "Stimmung", "Straße", "Stromanbieter", "Studien", "studieren Haben", "Stühle", "suchen", "Südbads So", "Supermarkt", "surfen", "Süßes", "System Auch", "Tafel", "Tagesablauf", "täglich", "Talk", "Tasse", "teilnehmen", "Ten", "testen", "Themenwoche", "Tod", "tragen", "treibe", "treu", "trotz", "TSCHATZ Die", "TSCHATZ Mitgliedschaft", "tun", "tun Vielleicht", "türkische", "Turnschuhe", "Typisch", "über", "überhaupt", "überlegt", "übernehmen", "überweisen", "überzeugt Jetzt", "übrigens", "Uhr", "Uhr Man", "umgehen", "umgehen Ich", "umkreisen", "umsonst", "Umwelt", "Umweltschutz", "unbedingt", "unbefristete", "unbezahlbar", "ungewohnt", "unterschiedliche", "unterstützen Menschen", "unterstützen Wir", "Unterstützung", "unterwegs", "Urlaub", "ußern", "Varianten Wer", "Veranstaltung", "Verantwortung", "verbessern Maßnahmen", "verboten In", "verbrauchen", "verdächtige", "Verein Meine", "vergessen", "vergleichen", "verhaftet", "Verkauf", "verkaufen Der", "Verkäuferin", "verkauft Im", "Verkehrsmittel", "verlängert", "verlassen", "verletzt", "verloren", "Verlust Fenster", "Vermieter", "vernünftige", "verschiedenen", "verschwand", "Versicherungen", "verstanden", "verstehen", "Vertrag", "vertraust", "verzichten", "verzichten Edward", "verzichten Wir", "viele", "Vielleicht", "Viertel", "völlig", "von Erholung keine Spur", "vor", "vorbereitet In", "Vorschlag", "vorsichtig", "Vortrag", "Vorwürfe Zeigen", "wächst", "Wahl", "warnen", "warum", "was", "Wäsche", "Webseite", "wechseln", "weder", "Weg", "wegen", "wegräumen", "wegwerfen", "weitergebildet Außerdem", "weiterkommen", "weiterzumachen", "werden Für", "wertvoll", "wichtig", "widersprechen Seien", "wie Profis!", "wieder", "wiederholen Verzeihung", "Woche", "wohl", "wohnen", "Wohnhäuser", "Wohnraum", "wohnt", "Wohnung", "Wohnungsamt", "wütend", "z", "Zahlungseingänge", "Zahnarzt", "Zeichnungen", "zeigen", "zeigt", "zerstören", "Ziel", "Ziele", "zuerst", "Zug", "Zulassung", "Zulassungsstelle", "zuletzt", "zurechtkommen", "zurzeit", "zusammen", "Zusammenfassend", "zusammenleben", "zustimmen", "zuverlässig", "zwar"
+]
+            },
+            miteinander:{
+                es:[],
+                de:[]
+            },
+            duolingo:{
+                es:["Tomamos el tren al centro de la ciudad.", "Está ubicado al oriente de la ciudad.", "Puedes ver que el centro está en el sur.", "Está contento en su propia comunidad.", "El clima en la ciudad y sus alrededores es frío.", "Eso no cambia nada entre nosotros.", "¿Cómo se ve el reloj desde abajo?", "así es.", "Hay algunas personas interesantes aquí.", "son siempre las mismas personas", "necesario", "Investigación", "así es como puedes mirarlo", "Se aplican ambas razones posibles.", "Es realmente una velada encantadora.", "allá atrás", "Le gustan los libros sencillos.", "es su turno", "De lo contrario", "lo", "participar", "Incluso llegamos temprano", "Cierra la puerta desde afuera.", "A través de esto", "¿Qué sé yo?", "actualmente", "De eso no se trata", "encima", "no aquí", "son las mismas personas", "diferente", "Razón", "la emergencia", "Él nos habló", "esa era mi casa", "ella fue al doctor", "el alojamiento", "anterior", "estas son mis viejas llaves", "responsable", "responsable", "Sin ti no estaríamos aquí hoy", "la hierba", "Antes (adj)", "te ves genial", "dejar", "omitir, dejar pasar", "extrañar", "te ves genial", "Perdí el autobús", "aceptar", "fundar", "encontré una empresa", "dormitorio", "conocido", "secretamente", "lo digo en serio", "realmente me gusta ella", "no tengo ganas", "el lugar", "todo está bien contigo", "es mio", "espectáculo", "¿Vas a almorzar?", "el saludo", "Eso costará más", "vivirás con nosotros", "no iré hoy", "mientras", "Duerme mientras su amigo habla.", "abierto", "recordar", "cuyo", "de aquí en adelante", "La práctica hace la perfección", "La educación comienza en casa.", "¿Para qué necesitas esto?", "Estarán cerrados", "a más tardar", "el almacén", "la determinación", "la entrega", "Puedes apoyarnos", "el pago", "el uso", "la imaginacion", "Comparación", "positivo", "la referencia", "de peligro", "la perdida", "Promedio", "la financiación", "la mediación", "tímido", "cooperación", "Acciones", "Ajustes", "el alcance", "el manejo", "Aplicaciones", "la entrada", "Compromisos", "la apertura", "el enfoque"],
+
+                de:["Wir fahren mit der Bahn ins Stadtzentrum", "Es liegt im Osten der stadt", "Man kann sehen, dass das Zentrum im Süden ist", "Er ist in seiner eigenen Gemeinde zufrieden", "Das Klima in de Stadt und in der Umgebung ist kalt", "Das ändert nichts zwischen uns", "Wie sieht die Uhr von unnen aus?", "so ist das nun mal.", "Ein paar interessante Leute sind hier", "das sind immer die gleichen Leute", "notwendig", "Untersuchung", "so kann man es betrachten", "Beide möglichen Gründe treffen zu", "es ist wirklich eun schöner Abend", "da hinten", "die einfachen Bücher gefallen ihm", "Er ist dran", "Ansonsten", "daran", "teilnehmen", "wir sind sogar früh", "Er schließt die Tür von außen", "Dadurch", "Was weiß ich denn?", "derzeit", "Darum geht es hier nicht", "vorbei", "hier nicht", "es sind die gleichen Leute", "unterschiedliche", "Grund", "die Notfall", "Er sprach mit uns", "Das war mein Haus", "Sie ging zum Arzt", "die Unterkunft", "ehemaligen", "das sind meine alten Schlüssel", "zuständig", "verantwortlich", "Ohne euch wären wir heute nicht hier", "das Gras", "Bevor", "Du siehst super aus", "verlassen", "verpasssen", "vermissen", "Du siehst toll aus", "Ich habe den Bus verpasst", "akzeptieren", "gefunden", "ich gefunde eine firma", "Schlafzimmer", "bekannt", "heimlich", "Ich meine es ernst", "ich mag sie unheimlich", "ich habe kein Lust", "die Stelle", "dir geht es gut", "Es gehört mir", "zeigen", "Gehst du zum Mittagessen?", "Die Anrede", "Das wird mehr kosten", "du wirst bei uns wohnen", "ich werde heute nicht gehen", "während", "Er schläft, während sein Freund spricht", "offen", "merken", "dessen", "ab jetzt", "Übung macht den meister", "Erziehung beginnt zu Hause", "Wofür brauchst du das?", "Sie werden geschlossen haben", "spätestens", "das Lager", "die Bestimmung", "die Lieferung", "Sie können uns unterstützen", "die Zahlung", "die Verwendung", "die Vorstellun", "Vergleich", "positiv", "der Bezug", "der Gefahr", "der Verlust", "Durschchnitt", "die Förderung", "die Vermittlung", "schüchtern", "Kooperation", "Anteile", "Einstellungen", "der Umfang", "der Umgang", "Anwendungen", "der Eintritt", "Verpflichtungen", "die Eröffnung", "der Ansatz"]
+            }
+
+        }
+
+        // prepara el arrai de palabra desde un ob base de datos
+        function bases(numero) {
+            var op 
+            baseesp= baseDeDatod[numero]["es"]
+            basede= baseDeDatod[numero]["de"]
+
+            document.getElementById("titulo").innerHTML= numero
+            document.getElementById("tiempo").innerHTML= baseesp.length
+            vistos=[]
+            verlista(baseesp,basede)
+            opciones()
+            
+        }
+       
+
+
+        var op1
+        ,op2
+        ,op3
+        ,op4
+        var palabraBuscada;
+
+        var posiciones= [op1,op2,op3,op4];
+        var vistos=[]
+        var intentos= 0;
+        //generara el numero aleatoariao de la opciones y la palabra a buscar
+        function generador(){
+            let num =Math.floor(Math.random()*basede.length)   
+            return num
+        }
+
+        // carga valores en las variables de juego, y actualiza el dom
+        function opciones(){
+            palabraBuscada= generador()
+            if(vistos.includes(palabraBuscada)){
+                while (vistos.includes(palabraBuscada) && intentos < 15) {
+                    palabraBuscada =Math.floor(Math.random()*basede.length)
+                    intentos++
+                    //console.log("numero de intentos: ",intentos)
+                }
+            }
+            intentos=0
+            posiciones[0] = generador()
+            posiciones[1] = generador()
+            posiciones[2] = generador()
+            posiciones[3] = generador()
+            //vistos.push(palabraBuscada)
+            posiciones[Math.floor(Math.random()*4)]= palabraBuscada
+
+            document.getElementById("palabra").innerHTML= baseesp[palabraBuscada]            
+            document.getElementById("op1").innerHTML= basede[posiciones[0]]
+            document.getElementById("op2").innerHTML= basede[posiciones[1]]
+            document.getElementById("op3").innerHTML= basede[posiciones[2]]
+            document.getElementById("op4").innerHTML= basede[posiciones[3]]
+            // vacial la lista vistos cuando el length es igual al de la basede
+            if(vistos.length==basede.length -3){
+                vistos=[]
+            }
+            
+        }
+        function addlistaerrores(palabraBuscada) {
+            if(baseDeDatod.errores.de.includes(basede[palabraBuscada])){
+                console.log("esta en la lista...", )
+                return
+            }
+            baseDeDatod.errores.es.push(baseesp[palabraBuscada])
+            baseDeDatod.errores.de.push(basede[palabraBuscada])
+            //console.log(basede.indexOf(palabraBuscada))
+            //console.log(baseDeDatod.errores.de)
+            document.getElementById("errores").innerHTML= parseInt(document.getElementById("errores").innerHTML)+1    
+                    
+            
+        }
+
+        //verifica los aciertos
+        document.getElementById("opciones").addEventListener("click",(e)=>{
+            if(e.target.id== "op1"){
+                if(posiciones[0]== palabraBuscada){
+                    document.getElementById("opciones").style.background="green"
+                    document.getElementById("aciertos").innerHTML= parseInt(document.getElementById("aciertos").innerHTML)+1    
+                    setTimeout(() => {
+                        document.getElementById("opciones").style.background=""    
+                    }, 200);
+                    vistos.push(palabraBuscada)
+                    opciones()
+                }else{
+                    document.getElementById("opciones").style.background="red"
+                        setTimeout(() => {
+                        document.getElementById("opciones").style.background=""    
+                    }, 200);
+                    addlistaerrores(palabraBuscada)
+                    opciones()
+                }
+            }
+            if(e.target.id== "op2"){
+                if(posiciones[1]== palabraBuscada){
+                    document.getElementById("opciones").style.background="green"
+                    document.getElementById("aciertos").innerHTML= parseInt(document.getElementById("aciertos").innerHTML)+1    
+                    setTimeout(() => {
+                        document.getElementById("opciones").style.background=""    
+                    }, 200);
+                    vistos.push(palabraBuscada)
+                    opciones()
+                }else{
+                    document.getElementById("opciones").style.background="red"
+                    setTimeout(() => {
+                        document.getElementById("opciones").style.background=""    
+                    }, 200);
+                    addlistaerrores(palabraBuscada)        
+                    opciones()
+                }
+            }
+            if(e.target.id== "op3"){
+                if(posiciones[2]== palabraBuscada){
+                    document.getElementById("opciones").style.background="green"
+                    document.getElementById("aciertos").innerHTML= parseInt(document.getElementById("aciertos").innerHTML)+1    
+                    setTimeout(() => {
+                        document.getElementById("opciones").style.background=""    
+                    }, 200);
+                    vistos.push(palabraBuscada)
+                    opciones()
+                }else{
+                    document.getElementById("opciones").style.background="red"
+                    setTimeout(() => {
+                        document.getElementById("opciones").style.background=""    
+                    }, 200);
+                    addlistaerrores(palabraBuscada)
+                    
+                    opciones()
+                }
+            }
+            if(e.target.id== "op4"){
+                if(posiciones[3]== palabraBuscada){
+                    document.getElementById("opciones").style.background="green"
+                    document.getElementById("aciertos").innerHTML= parseInt(document.getElementById("aciertos").innerHTML)+1    
+                    setTimeout(() => {
+                        document.getElementById("opciones").style.background=""    
+                    }, 200);
+                    vistos.push(palabraBuscada)
+                    opciones()
+                }else{
+                    document.getElementById("opciones").style.background="red"
+                    setTimeout(() => {
+                        document.getElementById("opciones").style.background=""    
+                    }, 200);
+                    addlistaerrores(palabraBuscada)
+                    opciones()
+                }
+            }
+            
+        })
+
+        function desplegarmenu() {
+            var dw= document.getElementById("menu")
+            var dh= document.getElementById("menu")
+            if(dh.style.height=== "") {
+                //console.log("a ", dh.style.height, "- ")
+                document.getElementById("menu").style.height = "50%";
+                dw.style.width= "50%"
+                setTimeout(() => {
+                    document.getElementById("menu").setAttribute("class", "desplegado")    
+                }, 10);
+                
+                
+            }else{
+                document.getElementById("menu").style.height = "";
+                dw.style.width= ""
+                document.getElementById("menu").setAttribute("class", "")                
+            }
+            
+            
+        }
+        document.documentElement.addEventListener("click", (e)=>{
+            if (e.target.id != "menu" && document.getElementById("menu").className == "desplegado") {
+                    desplegarmenu()
+            }
+        })
+
+
+        // recibe las lista idioma nativo e idioma a aprender, las depliega en una elemento tabla con el Id lista
+        function verlista(baseesp,basede){
+            //conbinar listas, para ordenar alfabeticamente
+            let listaConvinada= [];
+            for (let i = 0; i < baseesp.length; i++) {
+                listaConvinada.push(basede[i] + "-"+ baseesp[i]);
+                
+            }
+
+            document.getElementById("lista").innerHTML= `
+            <tr>
+                <th>aleman</th>
+                <th>espanol</th>
+            </tr>
+            `
+            listaConvinada.sort().forEach(e=>{
+                let valor= e.split("-")    
+                document.getElementById("lista").innerHTML+=
+                `
+                    <tr>
+                        <td>${valor[0]}</td>
+                        <td>${valor[1]}</td>
+                    </tr>
+                `
+            })    
+        }
+
+
+
+
+        bases("cap1")
+
+        //adicionales
+        //funcion para agregar una palabra el localStorage en un elemento array llamado conocidad
+        function addconocidad() {
+            //tomar el valor de la palabra y agregarlo al array conocidad
+            let palabra= document.getElementById("palabra").innerHTML
+            if(localStorage.getItem("conocidad")==null){
+                localStorage.setItem("conocidad", JSON.stringify([palabra]))
+            }else{
+                
+                let conocidad= JSON.parse(localStorage.getItem("conocidad"))
+                // vericiacion de que la palabra no este en el array
+                if(conocidad.includes(palabra)){
+                    return
+                }
+                conocidad.push(palabra)
+                localStorage.setItem("conocidad", JSON.stringify(conocidad))
+            }
+            console.log(JSON.parse(localStorage.getItem("conocidad")))
+        }
+        
+        ///*
+        // seccion para repetirn papabras
+        // 
+        // *//
+        // crea una boton por cada elemento en la baseDatos llamando a la funcion bases(numero) y anadelo al id listas
+        Object.keys(baseDeDatod).forEach(key => {
+            const button = document.createElement('button');
+            button.innerText = key;
+            button.onclick = () => {
+                bases(key)
+                mostrarPalabra();
+            };
+            document.getElementById('listas').appendChild(button);
+        });
+       
+        var p1 = document.getElementById("p1");
+        var p2 = document.getElementById("p2");
+
+        var visto= [];
+        auto = auto;
+        dual = false;
+        var manejoDual= false;
+        var idioma = "de";
+
+        var intentos = 0;
+        function getPalabra(){
+            var index = generador();
+            while(visto.includes(index)&& intentos<10){
+                return getPalabra();
+                intentos++;
+                //console.log("intenton",intentos);
+                
+            }
+            if(visto.length == basede.length -3){
+                    visto = [];
+                    
+            }
+            visto.push(index);
+            return index;
+        }
+
+
+
+        function mostrarPalabra(){
+            var index = getPalabra();
+            p1.innerText = baseesp[index];
+            p2.innerText = basede[index];
+        }
+        
+        
+        // formuala para leer el innertext de un elemento que capture el evento en utterance y llame la funcion
+        function leerTexto() {
+            var texto;    
+            idioma = "de";
+            texto= p2.innerText; 
+            if(dual){
+                if(manejoDual){
+                    idioma = "es";
+                    texto= p1.innerText; 
+                    manejoDual = false;
+                }else{
+                    idioma ="de";
+                    texto= p2.innerText; 
+                    manejoDual = true;
+                }
+            }
+            
+            var utterance = new SpeechSynthesisUtterance(texto);
+            utterance.lang = idioma;
+            speechSynthesis.speak(utterance);
+            
+            
+            //idioma = idioma=="es-ES"?"de-DE":"es-ES";
+            //texto= texto==p1.innerText?p2.innerText:p1.innerText;
+            //if (speechSynthesis.speaking) {
+            //    console.log("Leyendo el texto");
+            //}
+            if(auto){
+                utterance.onend = function() {     
+                    setTimeout(() => {    
+                        if(idioma=="de"){
+                            mostrarPalabra();    
+                        }
+                        leerTexto();
+                        
+                    }, 100);
+                }
+                
+
+
+            }
+            
+        }
+    
+
+    </script>
+</body>
+</html>
