@@ -200,19 +200,7 @@
                 </g>
                 </svg>
             </div>
-            
-            <button onclick="bases('cap1')">cap 1</button>
-            <button onclick="bases('cap5')">cap 5</button>
-            <button onclick="bases('verbos')">verbos</button>
-            <button onclick="bases('advervios')">advervios</button>
-            <button onclick="bases('curso')">curso</button>
-            <button onclick="bases('duolingo')">duolingo</button>
-            <button onclick="bases('advervios')">libro miteinander</button>
-            
-            <button onclick="bases('errores')">errores</button>
-            
-            
-
+            <!-- botones creados con js -->
         </div>
         <h1 id="titulo">juego de palabras</h1>
         
@@ -295,6 +283,10 @@
                 es:["firmemente", "mantener", "acto", "desconocido", "La cantidad", "la derivación", "el apoyo", "el efecto", "desagradable", "la introducción", "fatiga", "tirar/mover, ha tirado/movido/mudado", "decepcionante", "notar; ha notado", "recordar", "viajar; ha viajado", "establecer", "poder pagar", "experiencia", "abierto", "Afirmar", "la administracion", "el evento", "llegó como tenía que venir", "tan pronto como", "recuperarse", "¿te estás recuperando bien?", "usar", "evitar", "evitar", "me evitas", "evitas verme", "decidir", "Decisión", "determinar", "varios", "intentar; ha intentado", "perdonar", "indulto", "tener", "esperar (preveer)", "Entregar", "presionar", "horrible", "aceptar", "divertido", "inventado", "crear, lograr", "puedo hacerlo", "obsevar (activo, tomar en cuenta)", "observar(pasivo, sin hacer nada)"],
                 de:["fest", "behalten", "handeln", "unbekannt", "die Menge", "die Ableitung", "die Ünterstützung", "die Wirkung", "unangenehmen", "die Einführung", "ermüden", "ziehen, hat gezogen", "enttäusch", "bemerken; hat bemerkt", "erinnern", "reisen; ist gereist", "festlegen", "leisten", "erfahren", "offnen", "Anspruch", "die Verwaltung", "die Veranstaltung", "es kam, wie es kommen musste", "sobald", "sich erholen", "erholst du dich gut?", "verwenden", "vermeiden", "meiden", "du meidest mich", "du meidest es, mich zu sehen", "entscheiden", "Entscheidung", "bestimmen", "vershiedene", "ausprobieren; hat ausprobiert", "vergeben", "verzeihen", "verfügen", "erwarten", "abgeben", "drücken", "schlimm", "akzeptieren", "komisch", "erfunden", "schaffen", "ich schaffe das", "beachten", "beobachten"]
             },
+            cap6:{
+                es:["la solución","las tiendas","la economia","Regular","el conocido","jalar","situado","confiable","en eso","poner alrededor","presente","misceláneas","la actuación","en absoluto","venir","pensativamente","precavido","el entretenimiento","Conversación","Solicitud","Entregar","conceder","promulgado","aplica","extrañar","desaparecido","en cualquier momento","hablar de","ambiente","el examinador","reunir","detener","¡No puedo creerlo!","sorpresa","actualmente","la confirmación","superior","la reunión","de acuerdo, ha estado de acuerdo","calma","las ventanas","bastante","ciertamente","existiría","destello","la ola","enojado","completo","tomar el control","¿Qué opinas de ello?","preparar","espera - ha aguantado","oral","comunicar - se ha comunicado","anotar","estoy escribiendo","gestionar - gestionado","lograr es similar a crear","la palabra (lograr) es similar a la palabra (crear)","inusual, extraño, raro"],
+                de:["die Lösung","die Geschäfte","die Wirtschaft","Regeln","der Bekannter","ziehen","gelegene","zuverlästig","darauf","um legen","anwesend","sonstiges","die Leistung","überhaupt","vorbeikommen","bedächtig","vorsichtig","die Unterhaltung","Gespräch","Antrag","abgeben","erteilen","erlassen","sich bewirbt","vermissen","verschhollen","jederzeit","sich unterhalten über","Umpfeld","der Prüfer","aufbauen","anhalten","ich fasse es nicht!","überraschen","zurzeit","die Bestätigung","überlegen","die Besprechung","vereinbaren, hat vereinbart","beruhigen","die Fenster","eher","bestimmt","gäbe","blitz","die Welle","zorgnig","erledigen","übernehmen","was hältst du davon?","vorbereiten","festhalten - hat festgehalt","mündlich","mitteilen - hat mitgeteilt","aufschreiben","ich schreibe auf","hinkriegen - hat hingekriegt","hinkriegen ist ähnlich wie schaffen","das Wort (hinkriegen) ist ähnlich wie das Wort (schaffen)","merkwürdig, seltsam, komisch"]
+            },
             
             verbos:{
                     es:[
@@ -358,6 +350,19 @@
             opciones()
             
         }
+
+        // crea una boton por cada elemento en la baseDatos llamando a la funcion bases(numero) y anadelo al id listas
+        Object.keys(baseDeDatod).forEach(key => {
+            const button = document.createElement('button');
+            button.innerText = key;
+            button.onclick = () => {
+                bases(key)
+                mostrarPalabra();
+            };
+            document.getElementById('menu').appendChild(button);
+            
+        });
+       
        
 
 
@@ -589,6 +594,7 @@
                 mostrarPalabra();
             };
             document.getElementById('listas').appendChild(button);
+            
         });
        
         var p1 = document.getElementById("p1");

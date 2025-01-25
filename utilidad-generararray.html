@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Array Formatter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px 0;
+        }
+        header h1 {
+            margin: 0;
+        }
+        textarea {
+            width: 100%;
+            max-width: 600px;
+            margin: 10px auto;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        pre {
+            text-align: left;
+            margin: 10px auto;
+            padding: 10px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Text to Array Formatter</h1>
+    <textarea id="inputText" rows="10" cols="50" placeholder="Enter your text here..."></textarea>
+    <br>
+    <button onclick="formatText()">Format Text</button>
+    <h2>Formatted Array:</h2>
+    <pre id="outputArray"></pre>
+    <button onclick="copyToClipboard()">Copy to Clipboard</button>
+
+    <script>
+        function copyToClipboard() {
+            const outputArray = document.getElementById('outputArray').textContent;
+            navigator.clipboard.writeText(outputArray).then(() => {
+                alert('Copied to clipboard');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+    <script>
+        function formatText() {
+            var lista;
+            const inputText = document.getElementById('inputText').value;
+            const formattedArray = inputText.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+            document.getElementById('outputArray').textContent = JSON.stringify(formattedArray, null);
+        }
+    </script>
+</body>
+</html>
