@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Curso A1</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      padding: 10px;
+      background-color: #f4f4f4;
+    }
+
+    .nav-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .nav-buttons button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+
+    .nav-buttons button:hover {
+      background-color: #0056b3;
+    }
+
+    .section {
+      display: none;
+      background-color: white;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    @media (min-width: 600px) {
+      .nav-buttons {
+        justify-content: flex-start;
+      }
+    }
+  </style>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#007bff">
+  
+</head>
+<body>
+
+  <div class="nav-buttons">
+    <button onclick="showSection('reglas')">Reglas Gramaticales</button>
+    <button onclick="showSection('juego')">Juego de Palabras</button>
+    <button onclick="showSection('oraciones')">Completar Oraciones</button>
+    <button onclick="showSection('declinacion')">Declinación de Adjetivos</button>
+  </div>
+
+  <div id="reglas" class="section">
+    <h2>Lista de Reglas Gramaticales A1</h2>
+    <p>Aquí irían las reglas básicas como el uso del presente, artículos definidos e indefinidos, etc.</p>
+  </div>
+
+  <div id="juego" class="section">
+    <h2>Juego de Selección de Palabras A1</h2>
+    <p>Aquí iría un mini juego para arrastrar y soltar palabras en el orden correcto.</p>
+  </div>
+
+  <div id="oraciones" class="section">
+    <h2>Ejercicio: Completar Oraciones A1</h2>
+    <p>Completa las frases con las palabras correctas.</p>
+  </div>
+
+  <div id="declinacion" class="section">
+    <h2>Ejercicio: Declinación de Adjetivos A1</h2>
+    <p>Ejercicios para practicar declinaciones con ejemplos como "ein schöner Tag", etc.</p>
+  </div>
+
+  <script>
+    function showSection(id) {
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+    <script>
+        if ("serviceWorker" in navigator) {
+          window.addEventListener("load", () => {
+            navigator.serviceWorker
+              .register("service-worker.js")
+              .then(reg => console.log("✅ Service Worker registrado"))
+              .catch(err => console.error("❌ Error registrando el Service Worker", err));
+          });
+        }
+      </script>
+      
+</body>
+</html>
