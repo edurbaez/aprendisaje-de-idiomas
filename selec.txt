@@ -1,60 +1,19 @@
-die Lösung
-die Geschäfte
-die Wirtschaft
-Regeln
-der Bekannter
-ziehen
-gelegene
-zuverlästig
-darauf
-um legen
-anwesend
-sonstiges
-die Leistung
-überhaupt
-vorbeikommen
-bedächtig
-vorsichtig
-die Unterhaltung
-Gespräch
-Antrag
-abgeben
-erteilen
-erlassen
-sich bewirbt
-vermissen
-verschhollen
-jederzeit
-sich unterhalten über
-Umpfeld
-der Prüfer
-aufbauen
-anhalten
-ich fasse es nicht!
-überraschen
-zurzeit
-die Bestätigung
-überlegen
-die Besprechung
-vereinbaren, hat vereinbart
-beruhigen
-die Fenster
-eher
-bestimmt
-gäbe
-blitz
-die Welle
-zorgnig
-erledigen
-übernehmen
-was hältst du davon?
-vorbereiten
-festhalten - hat festgehalt
-mündlich
-mitteilen - hat mitgeteilt
-aufschreiben
-ich schreibe auf
-hinkriegen - hat hingekriegt
-hinkriegen ist ähnlich wie schaffen
-das Wort (hinkriegen) ist ähnlich wie das Wort (schaffen)
-merkwürdig- seltsam -komisch
+        const baseDeDatod= {
+            posision1: {
+                de:["deshalb", "trotzdem", "danach", "davor", "zuerst", "dann", "später", "außerdem", "jedoch", "sonst", "inzwischen", "letztendlich", "nämlich", "allerdings", "daneben", "darum", "infolgedessen", "demnach", "folglich", "mittlerweile", "hierbei", "womöglich", "vermutlich", "eventuell", "anfangs", "schlussendlich", "übrigens"],
+                es:["por eso", "a pesar de eso", "después de eso", "antes de eso", "primero", "luego", "más tarde", "además", "sin embargo", "si no, de lo contrario", "mientras tanto", "finalmente", "es que / porque (explicativo)", "sin embargo / no obstante", "además / aparte de eso", "por eso", "como consecuencia", "por lo tanto / en consecuencia", "por consiguiente", "entretanto / mientras tanto", "en esto / en el marco de esto", "posiblemente", "probablemente", "tal vez / eventualmente", "al principio", "al final / finalmente", "por cierto"]
+            },
+            posision0: {
+                de:["deshalb", "trotzdem", "danach", "davor", "zuerst", "dann", "später", "außerdem", "jedoch", "sonst", "inzwischen", "letztendlich", "nämlich", "allerdings", "daneben", "darum", "infolgedessen", "demnach", "folglich", "mittlerweile", "hierbei", "womöglich", "vermutlich", "eventuell", "anfangs", "schlussendlich", "übrigens"],
+                es:["por eso", "a pesar de eso", "después de eso", "antes de eso", "primero", "luego", "más tarde", "además", "sin embargo", "si no, de lo contrario", "mientras tanto", "finalmente", "es que / porque (explicativo)", "sin embargo / no obstante", "además / aparte de eso", "por eso", "como consecuencia", "por lo tanto / en consecuencia", "por consiguiente", "entretanto / mientras tanto", "en esto / en el marco de esto", "posiblemente", "probablemente", "tal vez / eventualmente", "al principio", "al final / finalmente", "por cierto"]
+            },
+            nebensatz: {
+                de:["deshalb", "trotzdem", "danach", "davor", "zuerst", "dann", "später", "außerdem", "jedoch", "sonst", "inzwischen", "letztendlich", "nämlich", "allerdings", "daneben", "darum", "infolgedessen", "demnach", "folglich", "mittlerweile", "hierbei", "womöglich", "vermutlich", "eventuell", "anfangs", "schlussendlich", "übrigens"],
+                es:["por eso", "a pesar de eso", "después de eso", "antes de eso", "primero", "luego", "más tarde", "además", "sin embargo", "si no, de lo contrario", "mientras tanto", "finalmente", "es que / porque (explicativo)", "sin embargo / no obstante", "además / aparte de eso", "por eso", "como consecuencia", "por lo tanto / en consecuencia", "por consiguiente", "entretanto / mientras tanto", "en esto / en el marco de esto", "posiblemente", "probablemente", "tal vez / eventualmente", "al principio", "al final / finalmente", "por cierto"]
+            },
+            zeweiteiligen: {
+                de:["deshalb", "trotzdem", "danach", "davor", "zuerst", "dann", "später", "außerdem", "jedoch", "sonst", "inzwischen", "letztendlich", "nämlich", "allerdings", "daneben", "darum", "infolgedessen", "demnach", "folglich", "mittlerweile", "hierbei", "womöglich", "vermutlich", "eventuell", "anfangs", "schlussendlich", "übrigens"],
+                es:["por eso", "a pesar de eso", "después de eso", "antes de eso", "primero", "luego", "más tarde", "además", "sin embargo", "si no, de lo contrario", "mientras tanto", "finalmente", "es que / porque (explicativo)", "sin embargo / no obstante", "además / aparte de eso", "por eso", "como consecuencia", "por lo tanto / en consecuencia", "por consiguiente", "entretanto / mientras tanto", "en esto / en el marco de esto", "posiblemente", "probablemente", "tal vez / eventualmente", "al principio", "al final / finalmente", "por cierto"]
+            },
+            
+        }
