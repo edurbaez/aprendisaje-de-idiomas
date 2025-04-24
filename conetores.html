@@ -94,25 +94,26 @@
 </head>
 <body>
     <div class="container">
-        <h1>Memorizar Palabras</h1>
-        <div class="question">Selecciona la traducción correcta de "Manzana":</div>
-        <div class="options">
-            <div class="option" onclick="checkAnswer(this, false)">Dog</div>
-            <div class="option" onclick="checkAnswer(this, true)">Apple</div>
-            <div class="option" onclick="checkAnswer(this, false)">Car</div>
-            <div class="option" onclick="checkAnswer(this, false)">House</div>
+        <div id="memorizar">
+            <h1>Memorizar Palabras</h1>
+            <div class="question">Selecciona la traducción correcta de "Manzana":</div>
+                <div class="options">
+                    <div class="option" onclick="checkAnswer(this, false)">Dog</div>
+                    <div class="option" onclick="checkAnswer(this, true)">Apple</div>
+                    <div class="option" onclick="checkAnswer(this, false)">Car</div>
+                    <div class="option" onclick="checkAnswer(this, false)">House</div>
+                </div>
+            <div class="feedback" id="feedback"></div>
+            <button class="button" onclick="nextQuestion()">Siguiente</button>
         </div>
-        <div class="feedback" id="feedback"></div>
-        <button class="button" onclick="nextQuestion()">Siguiente</button>
+        <div id="repetir">
+            <div id="de" class="option">hallo</div>
+            <div id="es" class="option">hola</div>
+        </div>
+    
     </div>
-
     <script>
-
-        // funcion para asignar la respuesta correcta
-        function nextQuestion() {
-            alert('Aquí puedes cargar la siguiente pregunta.');
-        }
-        // funcion para verificar la respuesta
+    
 
 
         // JavaScript para manejar la lógica del ejercicio
