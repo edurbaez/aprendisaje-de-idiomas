@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memorizar Palabras</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        h1 {
+            color: #58a700;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .question {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .option {
+            background: #e8f5e9;
+            border: 2px solid #58a700;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .option:hover {
+            background: #c8e6c9;
+            transform: scale(1.05);
+        }
+
+        .option.correct {
+            background: #a5d6a7;
+            border-color: #388e3c;
+        }
+
+        .option.incorrect {
+            background: #ef9a9a;
+            border-color: #d32f2f;
+        }
+
+        .feedback {
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .button {
+            margin-top: 20px;
+            background: #58a700;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .button:hover {
+            background: #45a000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Memorizar Palabras</h1>
+        <div class="question">Selecciona la traducción correcta de "Manzana":</div>
+        <div class="options">
+            <div class="option" onclick="checkAnswer(this, false)">Dog</div>
+            <div class="option" onclick="checkAnswer(this, true)">Apple</div>
+            <div class="option" onclick="checkAnswer(this, false)">Car</div>
+            <div class="option" onclick="checkAnswer(this, false)">House</div>
+        </div>
+        <div class="feedback" id="feedback"></div>
+        <button class="button" onclick="nextQuestion()">Siguiente</button>
+    </div>
+
+    <script>
+
+        // funcion para asignar la respuesta correcta
+        function nextQuestion() {
+            alert('Aquí puedes cargar la siguiente pregunta.');
+        }
+        // funcion para verificar la respuesta
+
+
+        // JavaScript para manejar la lógica del ejercicio
+        // Puedes agregar más preguntas y respuestas aquí
+        // y modificar la lógica según sea necesario
+        function checkAnswer(element, isCorrect) {
+            const feedback = document.getElementById('feedback');
+            if (isCorrect) {
+                element.classList.add('correct');
+                feedback.textContent = '¡Correcto!';
+                feedback.style.color = '#388e3c';
+            } else {
+                element.classList.add('incorrect');
+                feedback.textContent = 'Incorrecto. Intenta de nuevo.';
+                feedback.style.color = '#d32f2f';
+            }
+        }
+
+        function nextQuestion() {
+            alert('Aquí puedes cargar la siguiente pregunta.');
+        }
+    </script>
+</body>
+</html>
